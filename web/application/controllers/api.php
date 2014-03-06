@@ -58,11 +58,17 @@ class Api extends REST_Controller {
 	public function update_categories_get() { //Обновляет категории вакансий с сайтов
 		$this->load->model('hh_api');
 		$this->load->model('sj_api');
+		
 		if ($this->hh_api->categories_to_db($this->hh_api->get_categories()) && $this->sj_api->categories_to_db($this->sj_api->get_categories())) { //$this->hh_api->categories_to_db($this->hh_api->get_categories())
 			$this->response(array('status' => 'success'));
 		} else {
 			$this->response(array('status' => 'fail'));
 		}
+	}
+	public function temp_get() {
+		echo 1;
+		$this->load->model('hh_api');
+		$this->hh_api->categories_to_db($this->hh_api->get_categories());
 	}
 	public function sourcecats_get() {
 		if(!$this->get('site') && (!$this->get('site')!='hh' && !$this->get('site')!='sj')) {

@@ -1,0 +1,77 @@
+#categories_wrapper {
+	
+}
+#categories_wrapper ul { 
+   list-style-type: disc; 
+   list-style-position: inside; 
+}
+#categories_wrapper ol { 
+   list-style-type: decimal; 
+   list-style-position: inside; 
+}
+#categories_wrapper ul ul, #categories_wrapper ol ul { 
+   list-style-type: circle; 
+   list-style-position: inside; 
+   margin-left: 15px; 
+}
+#categories_wrapper ol ol, #categories_wrapper ul ol { 
+   list-style-type: lower-latin; 
+   list-style-position: inside; 
+   margin-left: 15px; 
+}
+#categories_wrapper li{ 
+   margin-top: 10px; 
+}
+.plus, .minus, .save {
+	display:inline;
+	cursor: pointer;
+} 
+.plus img, .minus img {
+	width:16px;
+}
+#categories_wrapper form {
+	display:inline;
+	position:relative;
+}
+.cat_container {
+	display:inline;
+	position:relative;
+}
+.adding_frame {
+	position:relative;
+	border: 1px solid #C66653;
+	padding:5px;
+	margin-right:5px;
+	width:270px;
+}
+.hidden {
+	display:none !important;
+}
+.matches {
+	display:inline;
+	margin-left:4px;
+}
+.match {
+	margin-right:3px;
+	margin-left:3px;
+}
+.match {
+	display:inline;
+}
+.delete_match {
+	display:inline;
+}
+.sjmatches {
+	display:inline;
+}
+.delete_match img {
+	width:8px;
+	cursor: pointer;
+}
+.save {
+	margin-left:2px;
+}
+.save input[type="image"] {
+	width:16px;
+	height:16px;
+}

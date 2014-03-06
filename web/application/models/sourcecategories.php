@@ -37,34 +37,5 @@ class Sourcecategories extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
-	// --------------------------------------------------------------------
-	// Custom Methods
-	//   Add your own custom methods here to enhance the model.
-	// --------------------------------------------------------------------
-
-	/* Example Custom Method
-	function get_open_templates()
-	{
-		return $this->where('status <>', 'closed')->get();
-	}
-	*/
-
-	// --------------------------------------------------------------------
-	// Custom Validation Rules
-	//   Add custom validation rules for this model here.
-	// --------------------------------------------------------------------
-
-	/* Example Rule
-	function _convert_written_numbers($field, $parameter)
-	{
-	 	$nums = array('one' => 1, 'two' => 2, 'three' => 3);
-	 	if(in_array($this->{$field}, $nums))
-		{
-			$this->{$field} = $nums[$this->{$field}];
-	 	}
-	}
-	*/
 }
 
-/* End of file template.php */
-/* Location: ./application/models/template.php */
