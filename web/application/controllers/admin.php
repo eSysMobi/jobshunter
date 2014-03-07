@@ -90,6 +90,9 @@ class Admin extends CI_Controller {
 		if ($this->view_data['content']=='categories') {
 			$this->view_data['nav_menu'][] = array('url' => site_url('admin/categories'), 'name' => 'Категории');
 		}
+		if ($this->view_data['content']=='settings') {
+			$this->view_data['nav_menu'][] = array('url' => site_url('admin/settings'), 'name' => 'Настройки');
+		}
 		
 	}
 	private function prepare_main_menu() {
@@ -99,6 +102,7 @@ class Admin extends CI_Controller {
 			$menus = array(
 				'index' => array('name' => 'Главная','url' => site_url('admin/index'), 'is_active' => false),
 				'categories' => array('name' => 'Категории','url' => site_url('admin/categories'), 'is_active' => false),
+				'settings' => array('name' => 'Настройки','url' => site_url('admin/settings'), 'is_active' => false),
 			);
 			if ($this->view_data['content']) {
 				$menus[$this->view_data['content']]['is_active'] = true;
@@ -137,7 +141,21 @@ class Admin extends CI_Controller {
 				$this->db->delete('site_source_categories', array('Source_id' => $source_id));
 			}
 		}
-		print_r($db_matches);
 		redirect('admin/categories','location');
 	}
+	public function settings() {
+		$this->check_if_admin();
+		$this->view_data['content'] = 'settings';
+		$this->view_data['settings'] = new settings;
+		$this->prepare_nav_menu();
+		$this->prepare_main_menu();
+		$this->open_view();
+	}
+	public function save_settings() {
+		foreach(array('parse_days','cur_uah','cur_byr','cur_usd','cur_eur') as $var) {
+			$this->settings->$var = $this->input->post($var);
+		}
+		$this->settings->save();
+		redirect('admin/settings','location');
+ 	}
 }

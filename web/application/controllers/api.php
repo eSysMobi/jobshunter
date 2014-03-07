@@ -66,9 +66,13 @@ class Api extends REST_Controller {
 		}
 	}
 	public function temp_get() {
-		echo 1;
-		$this->load->model('hh_api');
-		$this->hh_api->categories_to_db($this->hh_api->get_categories());
+		$this->load->model('sj_api');
+		$this->sj_api->get_vacancies();
+	}
+	public function sitecats_get() {
+		$this->load->model('site_categories');
+		$all = $this->site_categories->get()->all_to_array();
+		$this->response($all,200);
 	}
 	public function sourcecats_get() {
 		if(!$this->get('site') && (!$this->get('site')!='hh' && !$this->get('site')!='sj')) {
@@ -177,16 +181,111 @@ class Api extends REST_Controller {
 		 // print_r(array_merge($hh,$sj));
 		// print('vacancies/?'.$sj_city_query.((!empty($sj_city_query) ? '&' : '')).$sj_spec_query.((!empty($sj_spec_query) ? '&' : '')).'page='.$page);
 	}
-	public function addbookmark_get() {
-		if(!$this->get('user_id') && !$this->get('apikey') && !$this->get('site') && ($this->get('site')!='sj' && $this->get('site')!='hh') && !($this->get('site_id'))) {
-			$this->response(array('status' => 'Bad request'), 400);
+	public function vacancies2_get() { // Получение вакансий
+		if($this->get('page')) {
+			$page = $this->get('page');
+		} else {
+			$page = 0;
 		}
-		$id = $this->get('site_id');
-		$this->load->model('user');
-		$user_apikey = $this->user->where('id',$this->get('user_id'))->where('apikey',$this->get('apikey'))->get()->all_to_array();
-		if (empty($user_apikey)) {
-			$this->response(array('status' => 'Invalid user'), 400);
-			return false;
+		$hh_city_query = '';
+		$sj_city_query = '';
+		$hh_spec_query = '';
+		$sj_spec_query = '';
+		$this->load->model('hh_api');
+		$this->load->model('sj_api');
+		if($this->get('city')) { // Если заданы города
+			$cities = $this->get('city');
+			$this->load->helper('array');
+			$this->load->model('city');
+			$hh_cities = array();
+			$sj_cities = array();
+			foreach($cities as $city) { // Получем из базы ID городов внутри систем SJ/HH
+				$city_obj = element(0, $this->city->where('id',$city)->get()->all_to_array());
+				if ($city_obj['hh_id']!=0) {
+					$hh_cities[] = $city_obj['hh_id'];
+				}
+				if ($city_obj['sj_type'] && $city_obj['sj_id']) {
+					$sj_cities[] = array('id' => $city_obj['sj_id'],'type' => $city_obj['sj_type']);
+				}
+			}
+			//Составляем части для запросов
+			$hh_city_query = $this->hh_api->create_query_part($hh_cities,'area');
+			
+			$first = true;
+			foreach($sj_cities as $sj_city) {
+				if (!$first) {
+					$sj_city_query .='&';
+				}
+				$sj_city_query .= $sj_city['type'].'[]='.$sj_city['id'];
+				$first = false;
+			}
+		}
+		//Если заданы категории для HH - составляем часть запроса
+		$hhcats = array();
+		$sjcats = array();
+		if ($cats = $this->get('cats')) {
+			$this->load->model('site_source_categories');
+			$query=$this->site_source_categories;
+			$first = true;
+			foreach($cats as $cat) {
+				if ($first) {
+					$query = $query->where('Site_id',$cat);
+					$first = false;
+				} else {
+					$query = $query->or_where('Site_id',$cat);
+				}
+			}
+			$out = $query->get()->all_to_array();
+			if (!empty($out)) {
+				$this->load->model('sourcecategories');
+				$query=$this->sourcecategories;
+				$first = true;
+				foreach($out as $out_row) {
+					if ($first) {
+						$query = $query->where('id',$out_row['Source_id']);
+						$first = false;
+					} else {
+						$query = $query->or_where('id',$out_row['Source_id']);
+					}
+				}
+				$out = $query->get()->all_to_array();
+				foreach($out as $out_row) {
+					if ($out_row['site']=='hh') {
+						$hhcats[] = $out_row['site_id'];
+					}
+					if ($out_row['site']=='sj') {
+						$sjcats[] = $out_row['site_id'];
+					}
+				}
+			}
+		}
+		// print_r($hhcats);
+		// print_r($sjcats);
+		if(!empty($hhcats)) {
+			$hh_spec_query = $this->hh_api->create_query_part($hhcats,'specialization');
+			log_message('info','vacancies?'.$hh_city_query.((!empty($hh_city_query) ? '&' : '')).$hh_spec_query.((!empty($hh_spec_query) ? '&' : '')).'page='.$page);
+			$hh_answer = json_decode($this->hh_api->make_request('vacancies?'.$hh_city_query.((!empty($hh_city_query) ? '&' : '')).$hh_spec_query.((!empty($hh_spec_query) ? '&' : '')).'page='.$page));
+			$hh = $this->hh_api->process_vacancies($hh_answer);
+			$hh_more = ($hh_answer->pages-2>=$hh_answer->page);
+		} else {
+			$hh = array();
+			$hh_more = false;
+		}
+		if(!empty($sjcats)) {
+			$sj_spec_query = 'catalogues='.implode(",", $sjcats);
+			$sj_answer = json_decode($this->sj_api->make_request('vacancies/?'.$sj_city_query.((!empty($sj_city_query) ? '&' : '')).$sj_spec_query.((!empty($sj_spec_query) ? '&' : '')).'page='.$page));
+			$sj = $this->sj_api->process_vacancies($sj_answer);
+			$sj_more = $sj_answer->more;
+		} else {
+			$sj = array();
+			$sj_more = false;
+		}
+		$this->response((object)array('items' => array_merge($hh,$sj),'sj_more' => $sj_more, 'hh_more' => $hh_more));
+	}
+	public function addbookmark_get() {
+		$this->check_if_user();
+		if(!$this->get('site') && ($this->get('site')!='sj' && $this->get('site')!='hh') && !($this->get('site_id'))) {
+			$this->response(array('status' => 'Bad request'), 400);
 		}
 		$this->load->model('bookmark');
 		$user_samebookmark = $this->bookmark->where('user_id',$this->get('user_id'))->where('site',$this->get('site'))->where('site_id',$this->get('site_id'))
@@ -226,29 +325,16 @@ class Api extends REST_Controller {
 	}
 	
 	public function bookmarks_get() {
-		if(!$this->get('user_id') && !$this->get('apikey')) {
-			$this->response(array('status' => 'Bad request'), 400);
-		}
-		$this->load->model('user');
-		$user_apikey = $this->user->where('id',$this->get('user_id'))->where('apikey',$this->get('apikey'))->get()->all_to_array();
-		if (empty($user_apikey)) {
-			$this->response(array('status' => 'Invalid user'), 400);
-			return false;
-		}
+		$this->check_if_user();
 		$this->load->model('bookmark');
 		$bookmarks = $this->bookmark->where('user_id',$this->get('user_id'))->where('deleted IS NULL')->get()->all_to_array();
 		$this->response($bookmarks, 200);
 	}
 	
 	public function bookmarkdelete_get() {
-		if(!$this->get('user_id') && !$this->get('apikey') && !$this->get('bookmark_id')) {
+		$this->check_if_user();
+		if(!$this->get('bookmark_id')) {
 			$this->response(array('status' => 'Bad request'), 400);
-		}
-		$this->load->model('user');
-		$user_apikey = $this->user->where('id',$this->get('user_id'))->where('apikey',$this->get('apikey'))->get()->all_to_array();
-		if (empty($user_apikey)) {
-			$this->response(array('status' => 'Invalid user'), 400);
-			return false;
 		}
 		$this->load->model('bookmark');
 		$user_bookmark = $this->bookmark->where('user_id', $this->get('user_id'))->where('id',$this->get('bookmark_id'))->get()->all_to_array();
@@ -263,6 +349,32 @@ class Api extends REST_Controller {
 		} else {
 			$this->response(array('status' => 'fail', 'error' => $user_bookmark->error->string));
 		}
+	}
+	public function subscribe_get() {
+		$this->check_if_user();
+		$this->load->model('subscription');
+		foreach(array('work','city','category') as $type) {
+			if (($values = $this->get($type)) && is_array($values)) {
+				foreach($values as $value) {
+					$this->subscription->add_subscription($this->get('user_id'),$type,$value);
+				}
+			}
+		}
+		$this->response(array('status' => 'success'));
+		
+	}
+	private function check_if_user() {
+		if(!$this->get('user_id') && !$this->get('apikey')) {
+			$this->response(array('status' => 'Bad request'), 400);
+			die;
+		}
+		$this->load->model('user');
+		$user_apikey = $this->user->where('id',$this->get('user_id'))->where('apikey',$this->get('apikey'))->get()->all_to_array();
+		if (empty($user_apikey)) {
+			$this->response(array('status' => 'Invalid user'), 400);
+			die;
+		}
+		return true;
 	}
 
 } 

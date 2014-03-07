@@ -11515,3 +11515,272 @@ DEBUG - 2014-03-05 23:08:01 --> File loaded: application/views/content.php
 DEBUG - 2014-03-05 23:08:01 --> File loaded: application/views/main.php
 DEBUG - 2014-03-05 23:08:01 --> Final output sent to browser
 DEBUG - 2014-03-05 23:08:01 --> Total execution time: 0.8012
+DEBUG - 2014-03-05 23:32:16 --> Config Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:32:16 --> URI Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Router Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Output Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Security Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Input Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:32:16 --> Language Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:32:16 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:32:16 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:32:16 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:32:16 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:32:16 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:32:16 --> Session Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:32:16 --> Session routines successfully run
+DEBUG - 2014-03-05 23:32:16 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:32:16 --> Config file loaded: application/config/rest.php
+ERROR - 2014-03-05 23:32:16 --> Severity: Notice  --> Undefined property: Api::$model /home4/itinsigh/public_html/jobshunter/app/application/controllers/api.php 69
+DEBUG - 2014-03-05 23:32:47 --> Config Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:32:47 --> URI Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Router Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Output Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Security Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> Input Class Initialized
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:47 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:48 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:32:48 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:32:48 --> Language Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:32:48 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:32:48 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:32:48 --> Session Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:32:48 --> Session routines successfully run
+DEBUG - 2014-03-05 23:32:48 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:32:48 --> Model Class Initialized
+ERROR - 2014-03-05 23:32:48 --> Could not find the language line "Sourcecategories_id"
+ERROR - 2014-03-05 23:32:48 --> Could not find the language line "Site_categories_id"
+ERROR - 2014-03-05 23:32:48 --> Could not find the language line "Site_categories_site_id"
+ERROR - 2014-03-05 23:32:48 --> Could not find the language line "site_source_categories_id"
+DEBUG - 2014-03-05 23:32:48 --> Helper loaded: form_helper
+DEBUG - 2014-03-05 23:32:48 --> Form Validation Class Initialized
+DEBUG - 2014-03-05 23:32:48 --> Language file loaded: language/english/form_validation_lang.php
+DEBUG - 2014-03-05 23:32:50 --> Final output sent to browser
+DEBUG - 2014-03-05 23:32:50 --> Total execution time: 2.9115
+DEBUG - 2014-03-05 23:34:55 --> Config Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:34:55 --> URI Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Router Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Output Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Security Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> Input Class Initialized
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:34:55 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:34:55 --> Language Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Config Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:35:19 --> URI Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Router Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Output Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Security Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Input Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:35:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:35:19 --> Language Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:35:19 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:35:19 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:35:19 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:35:19 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:35:19 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:35:19 --> Session Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:35:19 --> Session routines successfully run
+DEBUG - 2014-03-05 23:35:19 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:35:19 --> Model Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Model Class Initialized
+DEBUG - 2014-03-05 23:35:19 --> Model Class Initialized
+ERROR - 2014-03-05 23:35:21 --> Could not find the language line "Sourcecategories_id"
+DEBUG - 2014-03-05 23:35:26 --> Helper loaded: form_helper
+DEBUG - 2014-03-05 23:35:26 --> Form Validation Class Initialized
+DEBUG - 2014-03-05 23:35:26 --> Language file loaded: language/english/form_validation_lang.php
+DEBUG - 2014-03-05 23:35:26 --> Table Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Config Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:36:34 --> URI Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Router Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Output Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Security Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Input Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:34 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:36:34 --> Language Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:36:34 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:36:34 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:36:34 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:36:34 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:36:34 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:36:34 --> Session Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:36:34 --> Session routines successfully run
+DEBUG - 2014-03-05 23:36:34 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:36:34 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:36:34 --> Model Class Initialized
+ERROR - 2014-03-05 23:36:34 --> Could not find the language line "Site_categories_id"
+DEBUG - 2014-03-05 23:36:34 --> Table Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Config Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:36:45 --> URI Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Router Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Output Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Security Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Input Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> XSS Filtering completed
+DEBUG - 2014-03-05 23:36:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:36:45 --> Language Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:36:45 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:36:45 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:36:45 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:36:45 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:36:45 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:36:45 --> Session Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:36:45 --> Session routines successfully run
+DEBUG - 2014-03-05 23:36:45 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:36:45 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:36:45 --> Model Class Initialized
+ERROR - 2014-03-05 23:36:45 --> Could not find the language line "Site_categories_id"
+DEBUG - 2014-03-05 23:39:07 --> Config Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:39:07 --> URI Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Router Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Output Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Security Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Input Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:39:07 --> Language Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:39:07 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:39:07 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:39:07 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:39:07 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:39:07 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:39:07 --> Session Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:39:07 --> A session cookie was not found.
+DEBUG - 2014-03-05 23:39:07 --> Session routines successfully run
+DEBUG - 2014-03-05 23:39:07 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:39:07 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:39:07 --> Model Class Initialized
+ERROR - 2014-03-05 23:39:07 --> Could not find the language line "Site_categories_id"
+DEBUG - 2014-03-05 23:39:35 --> Config Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Hooks Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Utf8 Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> UTF-8 Support Enabled
+DEBUG - 2014-03-05 23:39:35 --> URI Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Router Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Output Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Security Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Input Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-05 23:39:35 --> Language Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Loader Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Helper loaded: url_helper
+DEBUG - 2014-03-05 23:39:35 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-05 23:39:35 --> Database Driver Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-05 23:39:35 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-05 23:39:35 --> Helper loaded: security_helper
+DEBUG - 2014-03-05 23:39:35 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-05 23:39:35 --> Session Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Helper loaded: string_helper
+DEBUG - 2014-03-05 23:39:35 --> A session cookie was not found.
+DEBUG - 2014-03-05 23:39:35 --> Session routines successfully run
+DEBUG - 2014-03-05 23:39:35 --> Controller Class Initialized
+DEBUG - 2014-03-05 23:39:35 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-05 23:39:35 --> Model Class Initialized
+ERROR - 2014-03-05 23:39:35 --> Could not find the language line "Site_categories_id"

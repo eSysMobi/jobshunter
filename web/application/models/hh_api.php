@@ -116,6 +116,20 @@ class Hh_api extends CI_Model {
 		}
 		return (object)$obj;
 	}
+	function get_vacancies() {
+		$this->load->model('settings');
+		$days_to_parse = $this->settings->parse_days;
+		$vac_list = new Vacancy_list;
+		for($page=0; $page<=49; $page++) {
+			$results = json_decode($this->make_request('vacancies?per_page=40&page='.$page));
+			foreach($results->items as $result) {
+				$url = str_replace('https://api.hh.ru/','',$result->url);
+				$vac_list->load_from_jobsite(json_decode($this->make_request($url)),'hh');
+				$vac_list->last_item()->to_db();
+			}
+		}
+		return $out;
+	}
 }
 
 ?>

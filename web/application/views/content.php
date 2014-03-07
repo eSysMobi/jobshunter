@@ -8,4 +8,7 @@ if ($content=='index') {
 if ($content=='categories') {
 	$this->load->view('category_page');
 }
+if ($content=='settings') {
+	$this->load->view('settings_page');
+}
 ?>

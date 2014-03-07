@@ -166,6 +166,17 @@ class Sj_api extends CI_Model {
 		$obj = (object)$obj;
 		return $obj;
 	}
+	function get_vacancies() {
+		$this->load->model('settings');
+		$days_to_parse = $this->settings->parse_days;
+		$vac_list = new Vacancy_list;
+		for($page=0; $page<=5; $page++) {
+			$results = json_decode($this->make_request('vacancies/?count=100&page='.$page));
+			foreach($results->objects as $result) {
+				$vac_list->load_from_jobsite($result,'sj');
+				$vac_list->last_item()->to_db();
+			}
+		}
+		return $out;
+	}
 }
-
-?>
