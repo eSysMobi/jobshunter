@@ -1,0 +1,86 @@
+﻿Регистрация пользователя
+http://jobshunter.mobi/app/index.php/api/register_user/format/html?last_name=Last&first_name=First&network=v&network_id=111
+last_name - фамилия
+first_name - имя
+network - соц. сеть(v - vk, f - facebook)
+network_id - id в соц. сети
+
+
+Вход пользователя
+http://jobshunter.mobi/app/index.php/api/register_user/format/html?network=v&network_id=111
+network - соц. сеть(v - vk, f - facebook)
+network_id - id в соц. сети
+
+Обновить категории с сайтов
+http://jobshunter.mobi/app/index.php/api/update_categories/format/html
+
+Получить список городов с вхождением
+http://jobshunter.mobi/app/index.php/api/cities/format/json?str=Саратов
+Владимир вам должен поясниить, как делаем, мне он уже рассказал:
+Вкратце
+Сначала человек ввод свой город - ему выдаются результаты, он их выбирает нужные
+Вывод:
+сities - массив городов с вхождениями
+regions - массив областей этих городов
+
+
+Вакансии
+http://jobshunter.mobi/app/index.php/api/vacancies/format/json?city[]=1518&city[]=1&hhcats[]=25.382&hhcats[]=25.383&sjcats[]=34&sjcats[]=33&page=2
+city[] - массив с городами(поле id из метода для городов)
+hhcats[] - массив с категориями из ХХ
+sjcats[] - массив с категориями из SJ
+page - страница. По умолчанию 0.
+
+
+Добавить в избранное
+http://jobshunter.mobi/app/index.php/api/addbookmark/format/json?user_id=2&apikey=3vp8i5fjdjkocs0&site=hh&site_id=8252535
+user_id - id юзера(который выдает метод для входа)
+apikey - apikey
+site - hh или sj
+site_id - id вакансии на сайте(site_id из метода для вакансий)
+
+
+Избранное
+http://jobshunter.mobi/app/index.php/api/bookmarks/format/json?user_id=2&apikey=3vp8i5fjdjkocs0
+
+Удалить из избранного
+http://jobshunter.mobi/app/index.php/api/bookmarkdelete/format/json?user_id=2&apikey=3vp8i5fjdjkocs0&bookmark_id=1
+bookmark_id - id в избранном
+
+Категории из базы
+http://jobshunter.mobi/app/index.php/api/sitecats/format/json
+
+Вакансии с внутренними категориями(из базы) (нужно потестить, то ли она вообще выводит)
+http://jobshunter.mobi/app/index.php/api/vacancies2/format/json?city[]=1518&city[]=1&cats[]=11&cats[]=12&page=1
+city[] - массив с городами(поле id из метода для городов)
+cats[] - массив с категориями
+page - страница. По умолчанию 0.
+
+Подписать пользователя
+http://jobshunter.mobi/app/index.php/api/subscribe/format/json?user_id=1&apikey=tn98zl1f07dpyqk&work[]=1
+user_id - id юзера(который выдает метод для входа)
+apikey - apikey
+work[] - массив с типами работ(будет метод для их получения)
+city[] - массив с городами
+category[] - массив с категориями
+
+Режимы работы
+http://jobshunter.mobi/app/index.php/api/worktypes/format/json
+
+Отписать пользователя
+http://jobshunter.mobi/app/index.php/api/unsubscribe/format/json?user_id=1&apikey=tn98zl1f07dpyqk&work[]=1
+user_id - id юзера(который выдает метод для входа)
+apikey - apikey
+work[] - массив с типами работ(будет метод для их получения)
+city[] - массив с городами
+category[] - массив с категориями
+
+Добавить GCM ID для пользователя 
+http://jobshunter.mobi/app/index.php/api/add_gcmid/format/json?user_id=1&apikey=tn98zl1f07dpyqk&gcmid=fff
+user_id - id юзера(который выдает метод для входа)
+apikey - apikey
+gcmid - registration id
+
+Активировать подписку
+http://jobshunter.mobi/app/index.php/api/enable_subscription/format/json?user_id=1&apikey=tn98zl1f07dpyqk
+

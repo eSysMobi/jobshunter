@@ -152,7 +152,7 @@ class Admin extends CI_Controller {
 		$this->open_view();
 	}
 	public function save_settings() {
-		foreach(array('parse_days','cur_uah','cur_byr','cur_usd','cur_eur') as $var) {
+		foreach(array('parse_days','cur_uah','cur_byr','cur_usd','cur_eur','cur_azn','cur_kzt') as $var) {
 			$this->settings->$var = $this->input->post($var);
 		}
 		$this->settings->save();

@@ -1,7 +1,7 @@
-<?
+<?php
 class Sj_api extends CI_Model {
 
-	public $url = 'https://api.superjob.ru/1.0/';
+	public $url = 'http://api.superjob.ru/1.0/';
 	public $db_name = 'sj';
 	function __construct()
 	{
@@ -177,6 +177,6 @@ class Sj_api extends CI_Model {
 				$vac_list->last_item()->to_db();
 			}
 		}
-		return $out;
+		return $vac_list;
 	}
 }

@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 class Vacancy extends CI_Model {
 	var $id;
 	var $salary_from;
@@ -15,10 +15,10 @@ class Vacancy extends CI_Model {
 	function load_from_hh($result) {
 		if ($result->salary) {
 			$rate = 1;
-			$result->salary->currency = strtolower($result->salary->currency);
-			if (isset($this->settings->{'cur_'.$result->salary->currency})) {
+			$result->salary->currency = strtoupper($result->salary->currency);
+			if (isset($this->settings->{'cur_'.strtolower($result->salary->currency)})) {
 				$this->currency = 'RUB';
-				$rate = $this->settings->{'cur_'.$result->salary->currency};
+				$rate = $this->settings->{'cur_'.strtolower($result->salary->currency)};
 			} else {
 				$this->currency = str_replace('RUR','RUB',$result->salary->currency);
 			}
@@ -30,7 +30,7 @@ class Vacancy extends CI_Model {
 		$exploded_time = explode('T',$result->published_at);
 		$this->{'date'} = $exploded_time[0].' '.current(explode('+',$exploded_time[1]));
 		$this->job = $result->name;
-		$this->description = mysql_real_escape_string(strip_tags(str_replace(array("<ul>","</li>"),"\n",$result->description)));
+		$this->description = strip_tags(str_replace(array("<ul>","</li>"),"\n",$result->description));
 		if ($result->schedule) {
 			switch ($result->schedule->id) {
 				case 'fullDay':
@@ -117,11 +117,7 @@ class Vacancy extends CI_Model {
 			$this->load->model('sourcecategories');
 			$this->load->model('site_source_categories');
 			foreach($result->catalogues as $spec) {
-				if ($spec->thread) {
-					$id = $spec->thread->id;
-				} else {
-					$id = $spec->id;
-				}
+				$id = $spec->id;
 				$cat = reset($this->sourcecategories->where('site','sj')->where('site_id',$id)->get()->all_to_array());
 				$cats[] = (string)$cat['id'];
 			}
@@ -141,6 +137,14 @@ class Vacancy extends CI_Model {
 	function to_db() {
 		$this->db->insert('vacancies', $this);
 		// echo $this->db->last_query();
-		die;
+		// die;
+	}
+	
+	function load_from_db_row($row) {
+		foreach(array('id','salary_from','salary_to','date','job','description','currency','worktype','categories','city','company','link') as $var) {
+			if(isset($row->$var)) {
+				$this->$var = $row->$var;
+			}
+		}
 	}
 }

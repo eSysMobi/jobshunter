@@ -1,4 +1,4 @@
-<?
+<?php
 class Hh_api extends CI_Model {
 
 	public $url = 'https://api.hh.ru/';
@@ -128,7 +128,7 @@ class Hh_api extends CI_Model {
 				$vac_list->last_item()->to_db();
 			}
 		}
-		return $out;
+		return $vac_list;
 	}
 }
 

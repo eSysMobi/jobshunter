@@ -2516,3 +2516,393 @@ DEBUG - 2014-03-06 09:16:03 --> XSS Filtering completed
 DEBUG - 2014-03-06 09:16:03 --> Model Class Initialized
 DEBUG - 2014-03-06 09:16:03 --> XSS Filtering completed
 DEBUG - 2014-03-06 09:16:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> Config Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:00:01 --> URI Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Router Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Output Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Security Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Input Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:00:01 --> Language Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:00:01 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:00:01 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:00:01 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:00:01 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:00:01 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:00:01 --> Session Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:00:01 --> Session garbage collection performed.
+DEBUG - 2014-03-06 23:00:01 --> Session routines successfully run
+DEBUG - 2014-03-06 23:00:01 --> Model Class Initialized
+ERROR - 2014-03-06 23:00:01 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:00:01 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:00:01 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:00:01 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:00:01 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:00:01 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> Model Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> Model Class Initialized
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:01 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:02 --> Helper loaded: array_helper
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "city_id"
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "city_parent_id"
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "city_sj_id"
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "city_rr_id"
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "city_sj_type"
+DEBUG - 2014-03-06 23:00:02 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:00:02 --> XSS Filtering completed
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "site_source_categories_id"
+ERROR - 2014-03-06 23:00:02 --> Could not find the language line "Sourcecategories_id"
+INFO  - 2014-03-06 23:00:02 --> vacancies?area=1&area=5&specialization=25.383&specialization=25.382&page=1
+DEBUG - 2014-03-06 23:06:33 --> Config Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:06:33 --> URI Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Router Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Output Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Security Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Input Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:06:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:06:33 --> Language Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:06:33 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:06:33 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:06:33 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:06:33 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:06:33 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:06:33 --> Session Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:06:33 --> Session routines successfully run
+DEBUG - 2014-03-06 23:06:33 --> Model Class Initialized
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:06:33 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:06:33 --> Config file loaded: application/config/rest.php
+ERROR - 2014-03-06 23:06:33 --> Could not find the language line "worktype_id"
+DEBUG - 2014-03-06 23:16:16 --> Config Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:16:16 --> URI Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Router Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Output Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Security Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Input Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:16:16 --> Language Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:16:16 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:16:16 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:16:16 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:16:16 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:16:16 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:16:16 --> Session Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:16:16 --> Session routines successfully run
+DEBUG - 2014-03-06 23:16:16 --> Model Class Initialized
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:16:16 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:16:16 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> Model Class Initialized
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:16 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> Config Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:16:57 --> URI Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Router Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Output Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Security Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Input Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:16:57 --> Language Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:16:57 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:16:57 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:16:57 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:16:57 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:16:57 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:16:57 --> Session Class Initialized
+DEBUG - 2014-03-06 23:16:57 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:16:57 --> Session routines successfully run
+DEBUG - 2014-03-06 23:16:57 --> Model Class Initialized
+ERROR - 2014-03-06 23:16:57 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:16:57 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:16:57 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:16:57 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:16:57 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:16:58 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:16:58 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:16:58 --> XSS Filtering completed
+ERROR - 2014-03-06 23:16:58 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:16:58 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:16:58 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:16:58 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:58 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:58 --> Model Class Initialized
+DEBUG - 2014-03-06 23:16:58 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:16:58 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> Config Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:19:26 --> URI Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Router Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Output Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Security Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Input Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:19:26 --> Language Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:19:26 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:19:26 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:19:26 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:19:26 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:19:26 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:19:26 --> Session Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:19:26 --> Session routines successfully run
+DEBUG - 2014-03-06 23:19:26 --> Model Class Initialized
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:19:26 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:19:26 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> Model Class Initialized
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:19:26 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> Config Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:29:35 --> URI Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Router Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Output Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Security Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Input Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:29:35 --> Language Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:29:35 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:29:35 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:29:35 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:29:35 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:29:35 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:29:35 --> Session Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:29:35 --> Session routines successfully run
+DEBUG - 2014-03-06 23:29:35 --> Model Class Initialized
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:29:35 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:29:35 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:29:35 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:29:35 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> Config Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:30:03 --> URI Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Router Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Output Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Security Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Input Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:30:03 --> Language Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:30:03 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:30:03 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:30:03 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:30:03 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:30:03 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:30:03 --> Session Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:30:03 --> Session routines successfully run
+DEBUG - 2014-03-06 23:30:03 --> Model Class Initialized
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:30:03 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:30:03 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:03 --> Model Class Initialized
+DEBUG - 2014-03-06 23:30:03 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> Config Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Hooks Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Utf8 Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> UTF-8 Support Enabled
+DEBUG - 2014-03-06 23:30:37 --> URI Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Router Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Output Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Security Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Input Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-03-06 23:30:37 --> Language Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Loader Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Helper loaded: url_helper
+DEBUG - 2014-03-06 23:30:37 --> Helper loaded: utilities_helper
+DEBUG - 2014-03-06 23:30:37 --> Database Driver Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Language file loaded: language/english/datamapper_lang.php
+DEBUG - 2014-03-06 23:30:37 --> Helper loaded: inflector_helper
+DEBUG - 2014-03-06 23:30:37 --> Helper loaded: security_helper
+DEBUG - 2014-03-06 23:30:37 --> Config file loaded: application/config/datamapper.php
+DEBUG - 2014-03-06 23:30:37 --> Session Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Helper loaded: string_helper
+DEBUG - 2014-03-06 23:30:37 --> Session routines successfully run
+DEBUG - 2014-03-06 23:30:37 --> Model Class Initialized
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "settings_id"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "settings_cur_uah"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "settings_cur_byr"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "settings_cur_usd"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "settings_cur_eur"
+DEBUG - 2014-03-06 23:30:37 --> Controller Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> Config file loaded: application/config/rest.php
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "user_id"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "user_register_date"
+ERROR - 2014-03-06 23:30:37 --> Could not find the language line "user_subscriber"
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> Model Class Initialized
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed
+DEBUG - 2014-03-06 23:30:37 --> XSS Filtering completed

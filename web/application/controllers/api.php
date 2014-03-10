@@ -66,8 +66,26 @@ class Api extends REST_Controller {
 		}
 	}
 	public function temp_get() {
+		$this->load->library('gcm');
+		// $this->load->model('sj_api');
+		// ini_set('default_socket_timeout', 10);
+		// $this->sj_api->get_vacancies();
+		$this->load->model('hh_api');
+		ini_set('default_socket_timeout', 10);
+		$this->hh_api->get_vacancies();
+	}
+	public function vacancies_to_db_get() {
 		$this->load->model('sj_api');
+		ini_set('default_socket_timeout', 10);
 		$this->sj_api->get_vacancies();
+		$this->load->model('hh_api');
+		$this->hh_api->get_vacancies();	
+	}
+	public function send_to_subscribers_get() {
+		$list = new Vacancy_list;
+		$list->load_from_db();
+		$this->load->model('subscription');
+		$this->subscription->get_subscriptions();
 	}
 	public function sitecats_get() {
 		$this->load->model('site_categories');
@@ -353,15 +371,35 @@ class Api extends REST_Controller {
 	public function subscribe_get() {
 		$this->check_if_user();
 		$this->load->model('subscription');
+		$user_id = $this->get('user_id');
 		foreach(array('work','city','category') as $type) {
 			if (($values = $this->get($type)) && is_array($values)) {
 				foreach($values as $value) {
-					$this->subscription->add_subscription($this->get('user_id'),$type,$value);
+					$this->subscription->add_subscription($user_id,$type,$value);
 				}
 			}
 		}
+		$this->response(array('status' => 'success'));	
+	}
+	public function enable_subscription_get() {
+		$this->check_if_user();
+		$this->load->model('subscription');
+		$user_id = $this->get('user_id');
+		$this->subscription->make_subscriber($user_id);
 		$this->response(array('status' => 'success'));
-		
+	}
+	public function unsubscribe_get() {
+		$this->check_if_user();
+		$this->load->model('subscription');
+		$user_id = $this->get('user_id');
+		foreach(array('work','city','category') as $type) {
+			if (($values = $this->get($type)) && is_array($values)) {
+				foreach($values as $value) {
+					$this->subscription->remove_subscription($user_id,$type,$value);
+				}
+			}
+		}
+		$this->response(array('status' => 'success'));	
 	}
 	private function check_if_user() {
 		if(!$this->get('user_id') && !$this->get('apikey')) {
@@ -376,5 +414,22 @@ class Api extends REST_Controller {
 		}
 		return true;
 	}
-
+	public function worktypes_get() {
+		$this->load->model('worktype');
+		$this->response($this->worktype->get()->all_to_array(),400);
+	}
+	public function add_gcmid_get() {
+		$this->check_if_user();
+		$user_id = $this->get('user_id');
+		if ($reg_id = $this->get('gcmid')) {
+			$this->load->model('subscription');
+			if ($this->subscription->add_gcmid($user_id,$reg_id)) {
+				$this->response(array('status' => 'success'), 400);
+			} else {
+				$this->response(array('status' => 'Invalid id'), 400);
+			}
+		} else {
+			$this->response(array('status' => 'No reg id'), 400);
+		}
+	}
 } 
