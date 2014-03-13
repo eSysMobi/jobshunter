@@ -58,7 +58,16 @@ class City extends DataMapper {
 		}
 		return $out;
 	}
-	
+	function get_all_parents_for_city($city_id,$string=false) {
+		$c = new City;
+		$city = $c->where('id', $city_id)->get();
+		$out[] = $string?(string)$city_id:$city_id;
+		while($city->parent_id!=0) {
+			$city = $c->where('id', $city->parent_id)->get();
+			$out[] = $string?(string)$city->id:$city->id;
+		}
+		return $out;
+	}
 	function post_model_init($from_cache = FALSE)
 	{
 	}

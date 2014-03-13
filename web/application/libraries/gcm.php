@@ -165,7 +165,6 @@ class GCM {
 	
 	protected function request($data)
 	{
-
 		$headers[] = 'Content-Type:application/json';
 		$headers[] = 'Authorization:key='.$this->apiKey;
 		

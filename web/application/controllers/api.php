@@ -66,26 +66,46 @@ class Api extends REST_Controller {
 		}
 	}
 	public function temp_get() {
-		$this->load->library('gcm');
-		// $this->load->model('sj_api');
-		// ini_set('default_socket_timeout', 10);
-		// $this->sj_api->get_vacancies();
-		$this->load->model('hh_api');
-		ini_set('default_socket_timeout', 10);
-		$this->hh_api->get_vacancies();
+		$this->load->model('city');
+		// print_r($this->city->get_all_parents_for_city(2683));
+		// $this->load->library('gcm');
+		// $this->gcm->setMessage('vacancy');
+        // $this->gcm->addRecepient('APA91bEbwRzEUtcZF1qeDZee-Wvu8iWYHKml2ZgZeXeMzSxTMBAx8unbezqi4wMeGGfksm5Viel8oISb4raJW6JULWHx8ZmOArBywVX7PQs98i2OzZrYgNa7QNS7vAKxTQfZRKfrJNCJ-kLB7bUaAG-RYe3HFniB9w');
+        // $this->gcm->setData(array(
+            // 'count' => 'testlink'
+        // ));
+        // $this->gcm->setTtl(500);
+        // $this->gcm->setTtl(false);
+        // $this->gcm->setGroup('Test');
+        // $this->gcm->setGroup(false);
+        // if ($this->gcm->send())
+            // echo 'Успешно отправлены все сообщения';
+        // else
+            // echo 'Хотя бы одно сообщение не было отправлено';
+        // print_r($this->gcm->status);
+        // print_r($this->gcm->messagesStatuses);
 	}
 	public function vacancies_to_db_get() {
 		$this->load->model('sj_api');
-		ini_set('default_socket_timeout', 10);
-		$this->sj_api->get_vacancies();
 		$this->load->model('hh_api');
+		ini_set('default_socket_timeout', 10);
 		$this->hh_api->get_vacancies();	
+		$this->sj_api->get_vacancies();
 	}
 	public function send_to_subscribers_get() {
 		$list = new Vacancy_list;
 		$list->load_from_db();
 		$this->load->model('subscription');
-		$this->subscription->get_subscriptions();
+		$res = $this->subscription->get_subscriptions();
+		$to_send = array();
+		foreach($res as $res_row) {
+			if ($count = $this->subscription->count_vacncies_for_sub($res_row)) {
+				$to_send[$res_row->gcm_id] = $count;
+			}
+		}
+		print_r($to_send);
+		die;
+		$this->subscription->send_amounts($to_send);
 	}
 	public function sitecats_get() {
 		$this->load->model('site_categories');
@@ -388,6 +408,13 @@ class Api extends REST_Controller {
 		$this->subscription->make_subscriber($user_id);
 		$this->response(array('status' => 'success'));
 	}
+	public function disable_subscription_get() {
+		$this->check_if_user();
+		$this->load->model('subscription');
+		$user_id = $this->get('user_id');
+		$this->subscription->unsubscribe($user_id);
+		$this->response(array('status' => 'success'));
+	}
 	public function unsubscribe_get() {
 		$this->check_if_user();
 		$this->load->model('subscription');
@@ -430,6 +457,23 @@ class Api extends REST_Controller {
 			}
 		} else {
 			$this->response(array('status' => 'No reg id'), 400);
+		}
+	}
+	public function update_seen_get() {
+		$this->check_if_user();
+		$user_id = $this->get('user_id');
+		$this->load->model('user');
+		if ($this->user->where('id',$user_id)->update('seen', 'NOW()', false)) {
+			$this->response(array('status' => 'success'), 400);
+		} else {
+			$this->response(array('status' => 'db error'), 400);
+		}
+	}
+	public function delete_old_get() {
+		if ($this->db->from('vacancies')->where('parse_date < NOW() - INTERVAL 24 HOUR')->delete()) {
+			$this->response(array('status' => 'success'), 400);
+		} else {
+			$this->response(array('status' => 'db error'), 400);
 		}
 	}
 } 

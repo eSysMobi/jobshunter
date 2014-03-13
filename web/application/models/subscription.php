@@ -52,11 +52,45 @@ class subscription extends CI_Model {
 		}
 	}
 	function get_subscriptions() {
-		$this->db->select('users_table.id as users_id, sub_table.sub_type as sub_type, sub_table.sub_id as sub_id, gcm_table.gcm_id as gcm_id');
+		$this->db->select('users_table.id as users_id,users_table.seen as seen, sub_table.sub_type as sub_type, sub_table.sub_id as sub_id, gcm_table.gcm_id as gcm_id');
 		$this->db->from('users as users_table');
 		$this->db->join('subscriptions as sub_table', 'users_table.id=sub_table.user_id');
 		$this->db->join('gcm_ids as gcm_table', 'gcm_table.user_id = users_table.id');
 		$this->db->where('users_table.subscriber',1);
 		$result = $this->db->get()->result();
+		return $result;
+	}
+	function count_vacncies_for_sub($sub) {
+		switch($sub->sub_type) {
+			case self::SUB_CATEGORY:
+				$this->db->like('categories', "\"{$sub->sub_id}\"");
+				break;
+			case self::SUB_WORK:
+				$this->db->like('worktype', $sub->sub_id);
+				break;
+			case self::SUB_CITY:
+				$this->db->like('city', "\"{$sub->sub_id}\"");
+				break;
+		}
+		$this->db->where('parse_date >',$sub->seen);
+		$this->db->from('vacancies');
+		return $this->db->count_all_results();
+	}
+	function send_amounts($to_send) {
+		foreach($to_send as $rec=>$amount) {
+			$this->send_message($rec,'vacancy',array('amount' => $amount));
+		}
+	}
+	function send_message($recepient,$text,$data) {
+		$this->load->library('gcm');
+		$this->gcm->setMessage($text);
+        $this->gcm->addRecepient($recepient);
+        $this->gcm->setData($data);
+        $this->gcm->setTtl(500);
+        $this->gcm->setTtl(false);
+        $this->gcm->setGroup('Test');
+        $this->gcm->setGroup(false);
+		if (!$this->gcm->send())
+			log_message('error', 'Message to '.$recipient.' wasnt sent.');
 	}
 }

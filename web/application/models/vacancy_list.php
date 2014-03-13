@@ -10,9 +10,11 @@ class Vacancy_list extends CI_Model {
 		}
 		foreach($results as $result) {
 			$vacancy = new Vacancy;
-			$vacancy->{'load_from_'.$site}($result);
-			$this->items[] = $vacancy;
+			if ($vacancy->{'load_from_'.$site}($result) && $this->check_if_unique($vacancy)) {
+				$this->items[] = $vacancy;
+			}
 		}
+		return true;
 	}
 	function last_item() {
 		return end($this->items);
@@ -25,4 +27,13 @@ class Vacancy_list extends CI_Model {
 			$this->items[] = $vacancy;
 		}
 	}
+	function check_if_unique($vacancy) {
+		foreach($this->items as $item) {
+			if ($item->link==$vacancy->link) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }

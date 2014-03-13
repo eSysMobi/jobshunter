@@ -158,7 +158,7 @@ class Sj_api extends CI_Model {
 		$obj['city'] = $v->town->title;
 		$obj['city'] = $v->town->title;
 		$obj['description'] = $v->work;
-		$obj['creation_date'] = date('Y-m-d H:i:s', $v->date_published);
+		$obj['creation_date'] = date('Y-m-d H:i:s', $v->date_published + 4*60*60);
 		$obj['employer'] = $v->firm_name;
 		$obj['salary_from'] = $v->payment_from;
 		$obj['salary_to'] = $v->payment_to;
@@ -173,8 +173,9 @@ class Sj_api extends CI_Model {
 		for($page=0; $page<=5; $page++) {
 			$results = json_decode($this->make_request('vacancies/?count=100&page='.$page));
 			foreach($results->objects as $result) {
-				$vac_list->load_from_jobsite($result,'sj');
-				$vac_list->last_item()->to_db();
+				if ($vac_list->load_from_jobsite($result,'sj')) {
+					$vac_list->last_item()->to_db();
+				}
 			}
 		}
 		return $vac_list;

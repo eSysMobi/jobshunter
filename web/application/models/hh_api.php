@@ -15,7 +15,11 @@ class Hh_api extends CI_Model {
 		  )
 		);
 		$context = stream_context_create($opts);
-		$answer = file_get_contents($this->url.$request, false, $context);
+		$try=1;
+		while(!($answer = @file_get_contents($this->url.$request, false, $context)) && $try<=5) {
+			$try++;
+			sleep(0.5*$try);
+		}
 		return $answer;
 	}
 	function get_categories() {
@@ -124,8 +128,9 @@ class Hh_api extends CI_Model {
 			$results = json_decode($this->make_request('vacancies?per_page=40&page='.$page));
 			foreach($results->items as $result) {
 				$url = str_replace('https://api.hh.ru/','',$result->url);
-				$vac_list->load_from_jobsite(json_decode($this->make_request($url)),'hh');
-				$vac_list->last_item()->to_db();
+				if ($vac_list->load_from_jobsite(json_decode($this->make_request($url)),'hh') && $vac_list->last_item()->check_if_unique_in_db()) {
+					$vac_list->last_item()->to_db();
+				}
 			}
 		}
 		return $vac_list;

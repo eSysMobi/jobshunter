@@ -13,6 +13,9 @@ class Vacancy extends CI_Model {
 	var $company;
 	var $link;
 	function load_from_hh($result) {
+		if (!isset($result->id) || !$result->id) {
+			return false;
+		}
 		if ($result->salary) {
 			$rate = 1;
 			$result->salary->currency = strtoupper($result->salary->currency);
@@ -65,15 +68,19 @@ class Vacancy extends CI_Model {
 		if ($result->area)	{
 			$this->load->model('City');
 			$city = reset($this->City->where('hh_id',$result->area->id)->get()->all_to_array());
-			$this->city = $city['id'];
+			$this->city = json_encode($this->City->get_all_parents_for_city($city['id'],true));
 		}
 		if ($result->employer) {
 			$this->company = $result->employer->name;
 		}
 		$this->link = $result->alternate_url;
+		return true;
 	}
 	
 	function load_from_sj($result) {
+		if (!isset($result->id) || !$result->id) {
+			return false;
+		}
 		$rate = 1;
 		if (isset($this->settings->{'cur_'.$result->currency})) {
 			$this->currency = 'RUB';
@@ -87,7 +94,7 @@ class Vacancy extends CI_Model {
 		if ($result->payment_from!=0) {
 			$this->salary_from = $rate*$result->payment_from;
 		}
-		$this->{'date'} = date('Y-m-d H:i:s', $result->date_published);
+		$this->{'date'} = date('Y-m-d H:i:s',strtotime('+4 hours', $result->date_published));
 		$this->job = $result->profession;
 		$this->description = "Обязанности: \n".$result->work."Условия: \n".$result->compensation."Требования: \n".$result->candidat;
 		if (isset($result->type_of_work->id)) {
@@ -126,18 +133,17 @@ class Vacancy extends CI_Model {
 		if ($result->town)	{
 			$this->load->model('City');
 			$city = reset($this->City->where('sj_id',$result->town->id)->get()->all_to_array());
-			$this->city = $city['id'];
+			$this->city = json_encode($this->City->get_all_parents_for_city($city['id'],true));
 		}
 		if ($result->firm_name) {
 			$this->company = $result->firm_name;
 		}
 		$this->link = $result->link;
+		return true;
 	}
 	
 	function to_db() {
 		$this->db->insert('vacancies', $this);
-		// echo $this->db->last_query();
-		// die;
 	}
 	
 	function load_from_db_row($row) {
@@ -145,6 +151,15 @@ class Vacancy extends CI_Model {
 			if(isset($row->$var)) {
 				$this->$var = $row->$var;
 			}
+		}
+	}
+	function check_if_unique_in_db() {
+		$this->db->where('link',$this->link);
+		$this->db->from('vacancies');
+		if ($this->db->count_all_results()>0.5) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }

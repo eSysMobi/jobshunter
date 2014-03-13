@@ -84,3 +84,11 @@ gcmid - registration id
 Активировать подписку
 http://jobshunter.mobi/app/index.php/api/enable_subscription/format/json?user_id=1&apikey=tn98zl1f07dpyqk
 
+Деактивировать подписку
+http://jobshunter.mobi/app/index.php/api/disable_subscription/format/json?user_id=1&apikey=tn98zl1f07dpyqk
+
+Обновить дату последнего просмотра свежих вакансий
+http://jobshunter.mobi/app/index.php/api/update_seen/format/json?user_id=1&apikey=tn98zl1f07dpyqk
+
+Удалить старые вакансии(24 часа)
+http://jobshunter.mobi/app/index.php/api/delete_old/format/json
