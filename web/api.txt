@@ -64,14 +64,14 @@ work[] - массив с типами работ(будет метод для и
 city[] - массив с городами
 category[] - массив с категориями
 
-Режимы работы
+Типы работы
 http://jobshunter.mobi/app/index.php/api/worktypes/format/json
 
 Отписать пользователя
 http://jobshunter.mobi/app/index.php/api/unsubscribe/format/json?user_id=1&apikey=tn98zl1f07dpyqk&work[]=1
 user_id - id юзера(который выдает метод для входа)
 apikey - apikey
-work[] - массив с типами работ(будет метод для их получения)
+work[] - массив с типами работ
 city[] - массив с городами
 category[] - массив с категориями
 
@@ -87,8 +87,15 @@ http://jobshunter.mobi/app/index.php/api/enable_subscription/format/json?user_id
 Деактивировать подписку
 http://jobshunter.mobi/app/index.php/api/disable_subscription/format/json?user_id=1&apikey=tn98zl1f07dpyqk
 
-Обновить дату последнего просмотра свежих вакансий
+Обновить дату последнего просмотра свежих вакансий(запускать при каждом просмотре списка свежих вакансий)
 http://jobshunter.mobi/app/index.php/api/update_seen/format/json?user_id=1&apikey=tn98zl1f07dpyqk
 
-Удалить старые вакансии(24 часа)
+Удалить старые вакансии(24 часа)(не нужен в приложении, нужен только для тестов)
 http://jobshunter.mobi/app/index.php/api/delete_old/format/json
+
+Свежие вакансии для юзера
+http://jobshunter.mobi/app/index.php/api/new_vacancies/format/json?user_id=2&apikey=3vp8i5fjdjkocs0&page=0&per_page=20
+user_id - id юзера
+apikey - apikey
+page - номер страницы с нуля(необязательно, по умолчанию 0)
+per_page - количество элементов на странице(необязательно, по умолчанию 20)

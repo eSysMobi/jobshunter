@@ -99,13 +99,12 @@ class Api extends REST_Controller {
 		$res = $this->subscription->get_subscriptions();
 		$to_send = array();
 		foreach($res as $res_row) {
-			if ($count = $this->subscription->count_vacncies_for_sub($res_row)) {
+			if ($count = $this->subscription->count_new_vacancies_for_sub($res_row)) {
 				$to_send[$res_row->gcm_id] = $count;
 			}
 		}
-		print_r($to_send);
-		die;
 		$this->subscription->send_amounts($to_send);
+		$this->response(array('status' => 'success'));
 	}
 	public function sitecats_get() {
 		$this->load->model('site_categories');
@@ -475,5 +474,25 @@ class Api extends REST_Controller {
 		} else {
 			$this->response(array('status' => 'db error'), 400);
 		}
+	}
+	public function new_vacancies_get() {
+		$this->check_if_user();
+		$user_id = $this->get('user_id');
+		if (!($page=$this->get('page'))) {
+			$page=0;
+		}
+		if (!($per_page=(int)$this->get('per_page'))) {
+			$per_page=20;
+		}
+		$this->load->model('subscription');
+		$subs = $this->subscription->get_subscriptions(false,$user_id);
+		if (!is_array($subs)) $subs=array($subs);
+		$amount = $this->subscription->get_new_vacancies_by_subs($subs,true);
+		$pages = ceil($amount/$per_page)-1;
+		$items = array();
+		if ($page<=$pages) {
+			$items = $this->subscription->get_new_vacancies_by_subs($subs,false,$page*$per_page,$per_page);
+		}
+		$this->response(array('items' =>$items,'total_items' => $amount,'total_pages' => $pages,'more' => ($page<$pages)?true:false), 400);
 	}
 } 

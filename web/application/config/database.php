@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['username'] = 'jobsh_user';
+$db['default']['password'] = '3fcqVYPYFQE6yF8J';
 $db['default']['database'] = 'itinsigh_jobshunter';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

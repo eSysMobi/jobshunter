@@ -51,16 +51,21 @@ class subscription extends CI_Model {
 			return false;
 		}
 	}
-	function get_subscriptions() {
-		$this->db->select('users_table.id as users_id,users_table.seen as seen, sub_table.sub_type as sub_type, sub_table.sub_id as sub_id, gcm_table.gcm_id as gcm_id');
+	function get_subscriptions($get_gcms=true, $user_id=false) {
+		$this->db->select('users_table.id as users_id,users_table.seen as seen, sub_table.sub_type as sub_type, sub_table.sub_id as sub_id'.($get_gcms?', gcm_table.gcm_id as gcm_id':''));
 		$this->db->from('users as users_table');
 		$this->db->join('subscriptions as sub_table', 'users_table.id=sub_table.user_id');
-		$this->db->join('gcm_ids as gcm_table', 'gcm_table.user_id = users_table.id');
+		if ($get_gcms) {
+			$this->db->join('gcm_ids as gcm_table', 'gcm_table.user_id = users_table.id');
+		}
 		$this->db->where('users_table.subscriber',1);
+		if ($user_id) {
+			$this->db->where('users_table.id',$user_id);
+		}
 		$result = $this->db->get()->result();
 		return $result;
 	}
-	function count_vacncies_for_sub($sub) {
+	function count_new_vacancies_for_sub($sub) {
 		switch($sub->sub_type) {
 			case self::SUB_CATEGORY:
 				$this->db->like('categories', "\"{$sub->sub_id}\"");
@@ -81,10 +86,10 @@ class subscription extends CI_Model {
 			$this->send_message($rec,'vacancy',array('amount' => $amount));
 		}
 	}
-	function send_message($recepient,$text,$data) {
+	function send_message($recipient,$text,$data) {
 		$this->load->library('gcm');
 		$this->gcm->setMessage($text);
-        $this->gcm->addRecepient($recepient);
+        $this->gcm->addRecepient($recipient);
         $this->gcm->setData($data);
         $this->gcm->setTtl(500);
         $this->gcm->setTtl(false);
@@ -92,5 +97,32 @@ class subscription extends CI_Model {
         $this->gcm->setGroup(false);
 		if (!$this->gcm->send())
 			log_message('error', 'Message to '.$recipient.' wasnt sent.');
+	}
+	function get_new_vacancies_by_subs($subs=array(),$count=false,$offset=false,$limit=false) {
+		$first=true;
+		foreach($subs as $sub) {
+			switch($sub->sub_type) {
+				case self::SUB_CATEGORY:
+					$this->db->like('categories', "\"{$sub->sub_id}\"");
+					break;
+				case self::SUB_WORK:
+					$this->db->like('worktype', $sub->sub_id);
+					break;
+				case self::SUB_CITY:
+					$this->db->like('city', "\"{$sub->sub_id}\"");
+					break;
+			}
+		}
+		$this->db->order_by("date", "desc");
+		$this->db->from('vacancies');
+		if ($offset && $limit) {
+			$this->db->limit($offset, $limit);
+		}
+		if ($count) {
+			$result = $this->db->count_all_results();
+		} else {
+			$result = $this->db->get()->result();
+		}
+		return $result;
 	}
 }
