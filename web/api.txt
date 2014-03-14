@@ -63,6 +63,9 @@ apikey - apikey
 work[] - массив с типами работ(будет метод для их получения)
 city[] - массив с городами
 category[] - массив с категориями
+salarywonull[] - массив со зарплатами(целые числа) не включая договорные
+salarywnull[] - массив со зарплатами(целые числа) включая договорные
+
 
 Типы работы
 http://jobshunter.mobi/app/index.php/api/worktypes/format/json
@@ -74,6 +77,8 @@ apikey - apikey
 work[] - массив с типами работ
 city[] - массив с городами
 category[] - массив с категориями
+salarywonull[] - массив со зарплатами(целые числа) не включая договорные
+salarywnull[] - массив со зарплатами(целые числа) включая договорные
 
 Добавить GCM ID для пользователя 
 http://jobshunter.mobi/app/index.php/api/add_gcmid/format/json?user_id=1&apikey=tn98zl1f07dpyqk&gcmid=fff

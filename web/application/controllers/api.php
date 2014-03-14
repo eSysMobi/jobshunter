@@ -391,7 +391,7 @@ class Api extends REST_Controller {
 		$this->check_if_user();
 		$this->load->model('subscription');
 		$user_id = $this->get('user_id');
-		foreach(array('work','city','category') as $type) {
+		foreach(array('work','city','category','salarywonull','salarywnull') as $type) {
 			if (($values = $this->get($type)) && is_array($values)) {
 				foreach($values as $value) {
 					$this->subscription->add_subscription($user_id,$type,$value);
@@ -418,7 +418,7 @@ class Api extends REST_Controller {
 		$this->check_if_user();
 		$this->load->model('subscription');
 		$user_id = $this->get('user_id');
-		foreach(array('work','city','category') as $type) {
+		foreach(array('work','city','category','salarywonull','salarywnull') as $type) {
 			if (($values = $this->get($type)) && is_array($values)) {
 				foreach($values as $value) {
 					$this->subscription->remove_subscription($user_id,$type,$value);
@@ -478,7 +478,7 @@ class Api extends REST_Controller {
 	public function new_vacancies_get() {
 		$this->check_if_user();
 		$user_id = $this->get('user_id');
-		if (!($page=$this->get('page'))) {
+		if (!($page=(int)$this->get('page'))) {
 			$page=0;
 		}
 		if (!($per_page=(int)$this->get('per_page'))) {

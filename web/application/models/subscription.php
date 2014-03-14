@@ -4,7 +4,9 @@ class subscription extends CI_Model {
 	const SUB_CATEGORY = 1;
 	const SUB_WORK = 2;
 	const SUB_CITY = 3;
-	private $subtypes = array('category' => 1, 'work' => 2, 'city' => 3);
+	const SUB_SALARYWONULL = 4;
+	const SUB_SALARYWNULL = 5;
+	private $subtypes = array('category' => 1, 'work' => 2, 'city' => 3, 'salarywonull' => 4, 'salarywnull' => 5);
 	function __construct()
 	{
 		parent::__construct();
@@ -13,7 +15,7 @@ class subscription extends CI_Model {
 		if (is_string($type)) {
 			$type = $this->subtypes[$type];
 		}
-		if (in_array($type, array(1,2,3))) {
+		if (in_array($type, array(1,2,3,4,5))) {
 			if ($this->db->select('user_id')->from('subscriptions')->where('user_id', $user_id)->where('sub_type', $type)->where('sub_id', $sub_id)->count_all_results()<0.5) {
 				$this->db->insert('subscriptions', array('user_id' => $user_id,'sub_type' => $type,'sub_id' => $sub_id));
 			}
@@ -27,7 +29,7 @@ class subscription extends CI_Model {
 		if (is_string($type)) {
 			$type = $this->subtypes[$type];
 		}
-		if (in_array($type, array(1,2,3))) {
+		if (in_array($type, array(1,2,3,4,5))) {
 			if ($this->db->select('user_id')->from('subscriptions')->where('user_id', $user_id)->where('sub_type', $type)->where('sub_id', $sub_id)->count_all_results()>0.5) {
 				$this->db->delete('subscriptions', array('user_id' => $user_id,'sub_type' => $type,'sub_id' => $sub_id));
 			}
@@ -73,8 +75,11 @@ class subscription extends CI_Model {
 			case self::SUB_WORK:
 				$this->db->like('worktype', $sub->sub_id);
 				break;
-			case self::SUB_CITY:
-				$this->db->like('city', "\"{$sub->sub_id}\"");
+			case self::SUB_SALARYWONULL:
+				$this->db->where('(salary_from >='.(int)$sub->sub_id.' OR salary_to >='.(int)$sub->sub_id.')');
+				break;
+			case self::SUB_SALARYWNULL:
+				$this->db->where('(salary_from >='.(int)$sub->sub_id.' OR salary_to >='.(int)$sub->sub_id.') OR ((IS_NULL(salary_from) OR salary_from==0) AND (IS_NULL(salary_to) OR salary_to==0))');
 				break;
 		}
 		$this->db->where('parse_date >',$sub->seen);
@@ -100,6 +105,7 @@ class subscription extends CI_Model {
 	}
 	function get_new_vacancies_by_subs($subs=array(),$count=false,$offset=false,$limit=false) {
 		$first=true;
+		$this->db->select('*');
 		foreach($subs as $sub) {
 			switch($sub->sub_type) {
 				case self::SUB_CATEGORY:
@@ -111,12 +117,18 @@ class subscription extends CI_Model {
 				case self::SUB_CITY:
 					$this->db->like('city', "\"{$sub->sub_id}\"");
 					break;
+				case self::SUB_SALARYWONULL:
+					$this->db->where('(salary_from >='.(int)$sub->sub_id.' OR salary_to >='.(int)$sub->sub_id.')');
+					break;
+				case self::SUB_SALARYWNULL:
+					$this->db->where('(salary_from >='.(int)$sub->sub_id.' OR salary_to >='.(int)$sub->sub_id.') OR ((IS_NULL(salary_from) OR salary_from==0) AND (IS_NULL(salary_to) OR salary_to==0))');
+					break;
 			}
 		}
 		$this->db->order_by("date", "desc");
 		$this->db->from('vacancies');
-		if ($offset && $limit) {
-			$this->db->limit($offset, $limit);
+		if ($offset!==false && $limit!==false) {
+			$this->db->limit($limit, $offset);
 		}
 		if ($count) {
 			$result = $this->db->count_all_results();
