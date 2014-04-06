@@ -18,7 +18,7 @@ public class GetFavTask extends AsyncTask<Void, Void, ArrayList<Vacancy>> {
 	private transient Context context;
 
 	public GetFavTask(Context context) {
-		jhRequest = new JHRequest();
+		jhRequest = new JHRequest(context);
 		this.context = context;
 	}
 

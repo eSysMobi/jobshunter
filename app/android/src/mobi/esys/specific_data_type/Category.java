@@ -1,15 +1,19 @@
 package mobi.esys.specific_data_type;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 2841196599146353679L;
 	private transient String name;
 	private transient String id;
-	private transient String provider;
 
-	public Category(String name, String id, String provider) {
+	public Category(String name, String id) {
 		super();
 		this.name = name;
 		this.id = id;
-		this.provider = provider;
 	}
 
 	public String getName() {
@@ -28,18 +32,9 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getProvider() {
-		return provider;
-	}
-
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
-
 	@Override
 	public String toString() {
-		return "Category [name=" + name + ", id=" + id + ", provider="
-				+ provider + "]";
+		return "Category [name=" + name + ", id=" + id;
 	}
 
 }

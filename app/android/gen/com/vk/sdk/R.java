@@ -8,23 +8,23 @@ package com.vk.sdk;
 
 public final class R {
 	public static final class color {
-		public static final int vk_color = 0x7f050000;
-		public static final int vk_grey_color = 0x7f050001;
-		public static final int vk_light_color = 0x7f050004;
-		public static final int vk_smoke_white = 0x7f050003;
-		public static final int vk_white = 0x7f050002;
+		public static final int vk_color = 0x7f04000a;
+		public static final int vk_grey_color = 0x7f04000b;
+		public static final int vk_light_color = 0x7f04000e;
+		public static final int vk_smoke_white = 0x7f04000d;
+		public static final int vk_white = 0x7f04000c;
 	}
 	public static final class id {
-		public static final int captchaAnswer = 0x7f040021;
-		public static final int captcha_container = 0x7f04001e;
-		public static final int imageView = 0x7f040020;
-		public static final int progressBar = 0x7f04001f;
+		public static final int captchaAnswer = 0x7f050064;
+		public static final int captcha_container = 0x7f050061;
+		public static final int imageView = 0x7f050063;
+		public static final int progressBar = 0x7f050062;
 	}
 	public static final class layout {
-		public static final int dialog_vkcaptcha = 0x7f030004;
+		public static final int dialog_vkcaptcha = 0x7f030007;
 	}
 	public static final class string {
-		public static final int vk_enter_captcha_text = 0x7f060000;
-		public static final int vk_retry = 0x7f060001;
+		public static final int vk_enter_captcha_text = 0x7f060028;
+		public static final int vk_retry = 0x7f060029;
 	}
 }

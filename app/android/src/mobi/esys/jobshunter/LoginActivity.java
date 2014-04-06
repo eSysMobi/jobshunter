@@ -132,7 +132,8 @@ public class LoginActivity extends Activity {
 									regBundle.putString("snetwork", snetwork);
 									regBundle.putString("nID", nID);
 
-									RegTask regTask = new RegTask();
+									RegTask regTask = new RegTask(
+											LoginActivity.this);
 									regTask.execute(regBundle);
 
 									try {
@@ -152,7 +153,10 @@ public class LoginActivity extends Activity {
 									finish();
 									startActivity(new Intent(
 											LoginActivity.this,
-											MainActivity.class));
+											MainActivity.class).putExtra(
+											"splashBundle",
+											getIntent().getExtras().getBundle(
+													"splashBundle")));
 								}
 							});
 

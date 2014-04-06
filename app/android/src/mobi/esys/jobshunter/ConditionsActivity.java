@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import mobi.esys.custom_widgets.SpezAutoCompleteView;
 import mobi.esys.specific_data_type.Category;
 import mobi.esys.specific_data_type.City;
 import mobi.esys.specific_data_type.SuperCategory;
 import mobi.esys.specific_data_type.Vacancy;
+import mobi.esys.swipe_dismiss.SwipeDismissListViewTouchListener;
 import mobi.esys.tasks.GetCityTask;
 import mobi.esys.tasks.GetSupCatsTask;
 import mobi.esys.tasks.GetVacTask;
@@ -16,8 +18,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,37 +31,64 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tokenautocomplete.TokenCompleteTextView.TokenClickStyle;
+import com.tokenautocomplete.TokenCompleteTextView.TokenListener;
+
 public class ConditionsActivity extends Activity {
 	private transient List<SuperCategory> categories;
 	private transient List<Category> subCategories;
-	private transient List<Category> subName;
+	private transient List<Category> subCatBuilder;
 	private transient ListView cityList;
 	private transient List<City> cities;
 	private transient ListView subSpecList;
 	private transient ProgressDialog dialog;
+	private transient SpezAutoCompleteView subSpecEdit;
+	private transient EditText cityEdit;
 
-	AutoCompleteTextView subSpecEdit;
+	private static final int CITY_VOICE_REC_CODE = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		subCatBuilder = new ArrayList<Category>();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cond_activity);
+
+		getCurrentFocus().clearFocus();
+
+		cityEdit = (EditText) findViewById(R.id.cityEdit);
+
+		ImageButton cityBtn = (ImageButton) findViewById(R.id.cityBtn);
+		cityBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SharedPreferences preferences = getSharedPreferences("JHPref",
+						MODE_PRIVATE);
+
+				cityEdit.setText(preferences.getString("cityName", ""));
+			}
+		});
+
 		categories = new ArrayList<SuperCategory>();
 		subCategories = new ArrayList<Category>();
-		subName = new ArrayList<Category>();
-		GetSupCatsTask supCatsTask = new GetSupCatsTask();
-		supCatsTask.execute();
-		subSpecEdit = (AutoCompleteTextView) findViewById(R.id.subSpecEdit);
+		// subName = new ArrayList<Category>();
+		GetSupCatsTask supCatsTask = new GetSupCatsTask(ConditionsActivity.this);
+		supCatsTask.execute(getIntent().getExtras().getBundle("splashBundle")
+				.getString("cats"));
+		subSpecEdit = (SpezAutoCompleteView) findViewById(R.id.subSpecEdit);
+		subSpecEdit.setTokenClickStyle(TokenClickStyle.Delete);
+		subSpecEdit.allowDuplicates(false);
+
 		try {
 			categories = supCatsTask.get();
 
@@ -85,8 +116,7 @@ public class ConditionsActivity extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				subSpecEdit.setText("");
-				subSpecEdit.setAdapter(null);
+
 			}
 
 			@Override
@@ -117,78 +147,39 @@ public class ConditionsActivity extends Activity {
 				subSpecEdit.setAdapter(new ArrayAdapter<String>(
 						ConditionsActivity.this,
 						android.R.layout.simple_list_item_1, subCats));
+
+				subSpecEdit.setTokenListener(new TokenListener() {
+
+					@Override
+					public void onTokenRemoved(Object arg0) {
+						for (int i = 0; i < subCatBuilder.size(); i++) {
+							if (subCatBuilder.get(i).getName()
+									.equals((String) arg0)) {
+								subCatBuilder.remove(i);
+							}
+						}
+					}
+
+					@Override
+					public void onTokenAdded(Object arg0) {
+						for (int i = 0; i < subCategories.size(); i++) {
+							if (subCategories.get(i).getName()
+									.equals((String) arg0)) {
+								subCatBuilder.add(subCategories.get(i));
+							}
+						}
+					}
+				});
 			}
 		});
 
-		subSpecEdit.setOnItemClickListener(new OnItemClickListener() {
+		ImageButton cityVoiceRecBtn = (ImageButton) findViewById(R.id.voiceBtn);
+		cityVoiceRecBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				final TextView text = ((TextView) arg1);
-				Log.d("text", text.getText().toString());
-				subSpecList = (ListView) findViewById(R.id.subSpecList);
-				for (int i = 0; i < subCategories.size(); i++) {
-					if (subCategories.get(i).getName()
-							.equals(text.getText().toString())
-							&& !subName.contains(text.getText().toString())) {
-						subName.add(subCategories.get(i));
-					}
-				}
-
-				String[] names = new String[subName.size()];
-				for (int i = 0; i < names.length; i++) {
-					names[i] = subName.get(i).getName();
-				}
-				WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-				Display display = wm.getDefaultDisplay();
-				Point size = new Point();
-				display.getSize(size);
-				int height = size.y;
-
-				subSpecList.setAdapter(new ArrayAdapter<String>(
-						ConditionsActivity.this,
-						android.R.layout.simple_list_item_1, names));
-
-				subSpecList
-						.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-							@Override
-							public boolean onItemLongClick(
-									final AdapterView<?> arg0, final View arg1,
-									final int arg2, final long arg3) {
-								subName.remove(arg2);
-
-								String[] names = new String[subName.size()];
-								for (int i = 0; i < names.length; i++) {
-									names[i] = subName.get(i).getName();
-								}
-								WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-								Display display = wm.getDefaultDisplay();
-								Point size = new Point();
-								display.getSize(size);
-								final int height = size.y;
-
-								subSpecList
-										.setAdapter(new ArrayAdapter<String>(
-												ConditionsActivity.this,
-												android.R.layout.simple_list_item_1,
-												names));
-								final RelativeLayout.LayoutParams clp = new RelativeLayout.LayoutParams(
-										RelativeLayout.LayoutParams.MATCH_PARENT,
-										names.length * height / 10);
-								clp.addRule(RelativeLayout.BELOW,
-										R.id.subSpecEdit);
-								subSpecList.setLayoutParams(clp);
-								return true;
-							}
-						});
-
-				RelativeLayout.LayoutParams clp = new RelativeLayout.LayoutParams(
-						RelativeLayout.LayoutParams.MATCH_PARENT, names.length
-								* height / 10);
-				clp.addRule(RelativeLayout.BELOW, R.id.subSpecEdit);
-				subSpecList.setLayoutParams(clp);
+			public void onClick(View v) {
+				voiceRecognition(CITY_VOICE_REC_CODE,
+						"Ќазовите название города, в котором вы хотели бы искать вакансии");
 			}
 		});
 
@@ -198,8 +189,9 @@ public class ConditionsActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				EditText cityEdit = (EditText) findViewById(R.id.cityEdit);
-				GetCityTask cityTask = new GetCityTask();
+
+				GetCityTask cityTask = new GetCityTask(ConditionsActivity.this);
+				Log.d("city", cityEdit.getText().toString());
 				cityTask.execute(cityEdit.getText().toString());
 				cities = new ArrayList<City>();
 				try {
@@ -227,45 +219,61 @@ public class ConditionsActivity extends Activity {
 						citiesNames.length * height / 10);
 				clp.addRule(RelativeLayout.BELOW, R.id.checkCityBtn);
 				cityList.setLayoutParams(clp);
-				cityList.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-					@Override
-					public boolean onItemLongClick(final AdapterView<?> arg0,
-							final View arg1, final int arg2, final long arg3) {
-						TextView textView = (TextView) arg1;
-						for (int i = 0; i < cities.size(); i++) {
-							if (cities.get(i).getCityName()
-									.equals(textView.getText().toString())) {
-
-								cities.remove(i);
-
-								String[] citiesNames = new String[cities.size()];
-								for (int j = 0; j < citiesNames.length; j++) {
-									citiesNames[j] = cities.get(j)
-											.getCityName();
-								}
-								WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-								final Display display = wm.getDefaultDisplay();
-								Point size = new Point();
-								display.getSize(size);
-								int height = size.y;
-
-								cityList = (ListView) findViewById(R.id.cityListView);
-								cityList.setAdapter(new ArrayAdapter<String>(
-										ConditionsActivity.this,
-										android.R.layout.simple_list_item_1,
-										citiesNames));
-								RelativeLayout.LayoutParams clp = new RelativeLayout.LayoutParams(
-										RelativeLayout.LayoutParams.MATCH_PARENT,
-										citiesNames.length * height / 10);
-								clp.addRule(RelativeLayout.BELOW,
-										R.id.checkCityBtn);
-								cityList.setLayoutParams(clp);
+				SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
+						cityList,
+						new SwipeDismissListViewTouchListener.DismissCallbacks() {
+							@Override
+							public boolean canDismiss(int position) {
+								return true;
 							}
-						}
-						return false;
-					}
-				});
+
+							@Override
+							public void onDismiss(ListView listView,
+									int[] reverseSortedPositions) {
+								for (int position : reverseSortedPositions) {
+
+									for (int i = 0; i < cities.size(); i++) {
+										if (cities
+												.get(i)
+												.getCityName()
+												.equals(listView.getAdapter()
+														.getItem(position))) {
+
+											cities.remove(i);
+
+											String[] citiesNames = new String[cities
+													.size()];
+											for (int j = 0; j < citiesNames.length; j++) {
+												citiesNames[j] = cities.get(j)
+														.getCityName();
+											}
+											WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+											final Display display = wm
+													.getDefaultDisplay();
+											Point size = new Point();
+											display.getSize(size);
+											int height = size.y;
+
+											cityList = (ListView) findViewById(R.id.cityListView);
+											cityList.setAdapter(new ArrayAdapter<String>(
+													ConditionsActivity.this,
+													android.R.layout.simple_list_item_1,
+													citiesNames));
+											RelativeLayout.LayoutParams clp = new RelativeLayout.LayoutParams(
+													RelativeLayout.LayoutParams.MATCH_PARENT,
+													citiesNames.length * height
+															/ 10);
+											clp.addRule(RelativeLayout.BELOW,
+													R.id.checkCityBtn);
+											cityList.setLayoutParams(clp);
+										}
+									}
+								}
+							}
+						});
+				cityList.setOnTouchListener(touchListener);
+				cityList.setOnScrollListener(touchListener.makeScrollListener());
 			}
 		});
 
@@ -276,7 +284,7 @@ public class ConditionsActivity extends Activity {
 
 			@Override
 			public void onClick(final View v) {
-				if (cityList != null && subSpecList != null) {
+				if (cityList != null && subCatBuilder.size() != 0) {
 					if (cityList != null) {
 						for (int i = 0; i < cityList.getChildCount(); i++) {
 							TextView currText = (TextView) cityList
@@ -290,26 +298,15 @@ public class ConditionsActivity extends Activity {
 							}
 						}
 					}
-					if (subSpecList != null) {
-						for (int i = 0; i < subSpecList.getChildCount(); i++) {
-							final TextView currText = (TextView) subSpecList
-									.getChildAt(i);
-							for (int j = 0; j < subName.size(); j++) {
-								if (subName
-										.get(j)
-										.getName()
-										.contains(currText.getText().toString())) {
-									if (subName.get(j).getProvider()
-											.equals("hh")) {
-										paramBuilder.append("&hhcats[]=")
-												.append(subName.get(j).getId());
-									} else {
-										paramBuilder.append("&sjcats[]=")
-												.append(subName.get(j).getId());
-									}
-								}
-							}
+					if (subCatBuilder.size() != 0) {
+
+						for (int j = 0; j < subCatBuilder.size(); j++) {
+
+							paramBuilder.append("&cats[]=").append(
+									subCatBuilder.get(j).getId());
+
 						}
+
 					}
 
 					GetVacTask getVacTask = new GetVacTask(
@@ -348,7 +345,7 @@ public class ConditionsActivity extends Activity {
 
 				} else {
 					Toast.makeText(ConditionsActivity.this,
-							"¬ыберете хот€ бы одни параметр",
+							"«аполните пол€ города и специализаций",
 							Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -370,5 +367,25 @@ public class ConditionsActivity extends Activity {
 		if (dialog.isShowing()) {
 			dialog.dismiss();
 		}
+	}
+
+	private void voiceRecognition(int RecCode, String extraPrompt) {
+		final Intent intent = new Intent(
+				RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT, extraPrompt);
+		startActivityForResult(intent, RecCode);
+	}
+
+	@Override
+	protected void onActivityResult(final int requestCode,
+			final int resultCode, final Intent data) {
+		if (requestCode == CITY_VOICE_REC_CODE && resultCode == RESULT_OK) {
+			final ArrayList<String> comands = data
+					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+			cityEdit.setText(comands.get(0));
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }

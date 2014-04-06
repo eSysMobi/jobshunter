@@ -25,8 +25,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.fortysevendeg.android.swipelistview.SwipeListView;
-import com.tjerkw.slideexpandable.library.SlideExpandableListAdapter;
+import com.fortysevendeg.swipelistview.SwipeListView;
 
 public class JobsListActivity extends Activity {
 	private transient SwipeListView jobsList;
@@ -73,8 +72,7 @@ public class JobsListActivity extends Activity {
 
 		jobsList.setSwipeOpenOnLongPress(false);
 		jobsList.setAnimationCacheEnabled(true);
-		jobsList.setAdapter(new SlideExpandableListAdapter(jobsListAdapter,
-				R.id.moreInfoBtn, R.id.hiddenLayout));
+		jobsList.setAdapter(jobsListAdapter);
 
 		addBtn.setOnClickListener(new OnClickListener() {
 
@@ -120,7 +118,7 @@ public class JobsListActivity extends Activity {
 
 		SharedPreferences preferences = getSharedPreferences("JHPref",
 				MODE_PRIVATE);
-		AddToFavTask addToFavTask = new AddToFavTask();
+		AddToFavTask addToFavTask = new AddToFavTask(JobsListActivity.this);
 		Bundle addParams = new Bundle();
 		addParams.putString("siteID", addVacancy.getVacancyID());
 		addParams.putString("site", addVacancy.getVacancyProvider());
@@ -230,9 +228,12 @@ public class JobsListActivity extends Activity {
 		finish();
 		if (!getIntent().getExtras().getBoolean("isFav")) {
 			startActivity(new Intent(JobsListActivity.this,
-					ConditionsActivity.class));
+					ConditionsActivity.class).putExtra("splashBundle",
+					getIntent().getExtras().getBundle("splashBundle")));
 		} else {
-			startActivity(new Intent(JobsListActivity.this, MainActivity.class));
+			startActivity(new Intent(JobsListActivity.this, MainActivity.class)
+					.putExtra("splashBundle", getIntent().getExtras()
+							.getBundle("splashBundle")));
 		}
 		Log.d("stop", "back");
 	}

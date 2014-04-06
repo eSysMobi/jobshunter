@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddd"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signBtn"
+        android:layout_alignParentTop="true"
+        android:background="@null" >
+
+        <LinearLayout
+            android:id="@+id/cards_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/personalDataCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_frame"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/personalDataText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Персональные данные"
+                    android:textColor="@android:color/black"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/fioText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="ФИО"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/nameEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите ФИО"
+                    android:inputType="textPersonName"
+                    android:maxLength="30" >
+
+                    <requestFocus />
+                </EditText>
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="E-mail"
+                    android:textColor="@android:color/black" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/mailEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите ваш адрес электронной почты"
+                    android:inputType="textEmailAddress"
+                    whatever:testErrorString="Неправильный адрес электронной почты"
+                    whatever:testType="email" >
+
+                    <requestFocus />
+                </com.andreabaccega.widget.FormEditText>
+
+                <TextView
+                    android:id="@+id/telText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Номер телефона"
+                    android:textColor="@android:color/black" />
+
+                <LinearLayout
+                    android:id="@+id/telLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/telCodeText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1"
+                        android:background="@null"
+                        android:editable="false"
+                        android:ems="10"
+                        android:text="+7" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/telEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.9"
+                        android:ems="10"
+                        android:hint="Введите номер вашего телефона"
+                        android:inputType="phone"
+                        android:maxLength="13" >
+
+                        <requestFocus />
+                    </EditText>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Дата рождения"
+                    android:textColor="@android:color/black" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/dateEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите дату рождения дд.мм.гггг"
+                    android:inputType="datetime" >
+
+                    <requestFocus />
+                </com.andreabaccega.widget.FormEditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cityCard"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:background="@drawable/info_frame"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageButton
+                    android:id="@+id/cityCardCloseBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/close" />
+
+                <TextView
+                    android:id="@+id/cityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Место работы"
+                    android:textColor="@android:color/black"
+                    android:textSize="21sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/cityCardEditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="Город" />
+
+                    <EditText
+                        android:id="@+id/cityCardEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cityCardEditLabel"
+                        android:ems="10"
+                        android:maxLines="1" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <ImageButton
+                        android:id="@+id/cityCardBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/cityCardEdit"
+                        android:layout_alignRight="@+id/cityCardEdit"
+                        android:layout_alignTop="@+id/cityCardEdit"
+                        android:background="@null"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/find_city" />
+
+                    <Button
+                        android:id="@+id/checkCardCityBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cityCardEdit"
+                        android:layout_centerHorizontal="true"
+                        android:text="Проверить город" />
+
+                    <ListView
+                        android:id="@+id/cityCardListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/checkCardCityBtn" >
+                    </ListView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/specsCard"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:background="@drawable/info_frame"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageButton
+                    android:id="@+id/specCardCloseBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/close" />
+
+                <TextView
+                    android:id="@+id/specText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Специализации"
+                    android:textColor="@android:color/black"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Специальность" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/supCardSpecEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Специализация" />
+
+                <mobi.esys.custom_widgets.SpezAutoCompleteView
+                    android:id="@+id/subCardSpecEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timeCard"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:background="@drawable/info_frame"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageButton
+                    android:id="@+id/timeCardCloseBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/close" />
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Режим работы"
+                    android:textColor="@android:color/black"
+                    android:textSize="21sp" />
+
+                <LinearLayout
+                    android:id="@+id/timeBoxLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/info_frame"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/salaryCard"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:background="@drawable/info_frame"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageButton
+                    android:id="@+id/salaryCardCloseBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/close" />
+
+                <TextView
+                    android:id="@+id/salaryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="Зарплата"
+                    android:textColor="@android:color/black"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/fromText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:text="от"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/salaryFromEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:maxLength="11"
+                    android:maxLines="1" >
+
+                    <requestFocus />
+                </EditText>
+
+                <CheckBox
+                    android:id="@+id/includeCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Включая договорные" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/addCardBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@null"
+                android:src="@drawable/add" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/signBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Оформить подписку" />
+
+</RelativeLayout>

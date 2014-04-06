@@ -1,14 +1,15 @@
 package mobi.esys.tasks;
 
 import mobi.esys.server_side.JHRequest;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 public class RegTask extends AsyncTask<Bundle, Void, Bundle> {
 	JHRequest jhRequest;
 
-	public RegTask() {
-		jhRequest = new JHRequest();
+	public RegTask(Context context) {
+		jhRequest = new JHRequest(context);
 	}
 
 	@Override

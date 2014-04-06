@@ -38,10 +38,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
-                android:ems="10" >
+                android:ems="10"
+                android:maxLines="1" >
 
                 <requestFocus />
             </EditText>
+
+            <ImageButton
+                android:id="@+id/cityBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cityEdit"
+                android:layout_alignRight="@+id/cityEdit"
+                android:layout_alignTop="@+id/cityEdit"
+                android:background="@null"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/find_city" />
 
             <Button
                 android:id="@+id/checkCityBtn"
@@ -79,21 +92,26 @@
                 android:layout_below="@+id/supSpecEdit"
                 android:text="Специализация" />
 
-            <AutoCompleteTextView
+            <mobi.esys.custom_widgets.SpezAutoCompleteView
                 android:id="@+id/subSpecEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView3"
                 android:ems="10" />
 
-            <ListView
-                android:id="@+id/subSpecList"
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/voiceBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/subSpecEdit" >
-            </ListView>
-        </RelativeLayout>
+                android:layout_above="@+id/checkCityBtn"
+                android:layout_below="@+id/textView1"
+                android:layout_toRightOf="@+id/checkCityBtn"
+                android:background="@null"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mic" />
 
+        </RelativeLayout>
     </ScrollView>
 
 </RelativeLayout>

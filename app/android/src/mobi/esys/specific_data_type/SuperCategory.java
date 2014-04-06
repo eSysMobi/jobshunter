@@ -37,6 +37,8 @@ public class SuperCategory {
 	public void setSubCategories(List<Category> subCategories) {
 		this.subCategories = subCategories;
 	}
+	
+	 
 
 	@Override
 	public String toString() {

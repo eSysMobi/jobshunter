@@ -4,16 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.fortysevendeg.android.swipelistview.SwipeListView
+    <com.fortysevendeg.swipelistview.SwipeListView
         xmlns:swipe="http://schemas.android.com/apk/res-auto"
         android:id="@+id/jobsListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/backBtn"
         android:layout_alignParentTop="true"
-        android:layout_weight="1"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
+        swipe:swipeActionLeft="reveal"
         swipe:swipeBackView="@+id/jobs_list_item_action_view"
         swipe:swipeCloseAllItemsWhenMoveList="true"
         swipe:swipeFrontView="@+id/jobs_list_item_layout"

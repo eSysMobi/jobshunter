@@ -13,7 +13,7 @@ public class GetVacTask extends AsyncTask<Bundle, Void, ArrayList<Vacancy>> {
 	private transient Context context;
 
 	public GetVacTask(Context context) {
-		jhRequest = new JHRequest();
+		jhRequest = new JHRequest(context);
 		this.context = context;
 	}
 

@@ -1,6 +1,7 @@
 package mobi.esys.server_side;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import mobi.esys.networking.Request;
@@ -13,14 +14,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
 public class JHRequest {
 	private transient Request request;
+	private transient Context context;
+	private transient SharedPreferences preferences;
 
-	public JHRequest() {
-		request = new Request();
+	private static final String TAG = "subscr";
+
+	public JHRequest(Context context) {
+		this.request = new Request();
+		this.context = context;
+		this.preferences = context.getSharedPreferences("JHPref",
+				Context.MODE_PRIVATE);
 	}
 
 	public JSONObject getSpec() {
@@ -43,8 +53,6 @@ public class JHRequest {
 			Log.d("req", req.toString());
 			if (req.has("error")
 					&& req.getString("error").equals("User exists")) {
-				// apiKey = login(snetwork, nID);
-				// apiBundle.putString("apiKey", apiKey);
 
 				apiBundle = login(snetwork, nID);
 			} else {
@@ -76,7 +84,11 @@ public class JHRequest {
 	}
 
 	public List<City> getCities(String findStr) {
+		Log.d("city", "city task works");
 		List<City> cities = new ArrayList<City>();
+		Log.d("url",
+				"http://jobshunter.mobi/app/index.php/api/cities/format/json?str="
+						+ findStr);
 		JSONObject cityObj = request
 				.doJSONGetRequest("http://jobshunter.mobi/app/index.php/api/cities/format/json?str="
 						+ findStr);
@@ -89,65 +101,81 @@ public class JHRequest {
 			}
 		} catch (JSONException e) {
 		}
+
+		Log.d("city", cities.toString());
 		return cities;
 	}
 
-	public List<SuperCategory> getCats() {
+	public List<SuperCategory> JSONCatsToObjectCats(String array) {
 		List<SuperCategory> categories = new ArrayList<SuperCategory>();
-		JSONArray sjArray = request
-				.doJSONArrayGetRequest("https://api.superjob.ru/1.0/catalogues?all=1");
-		JSONArray hhArray = request
-				.doJSONArrayGetRequest("https://api.hh.ru/specializations");
-
+		JSONArray catsArray = new JSONArray();
 		try {
-			for (int i = 0; i < sjArray.length(); i++) {
-				JSONObject currSJCat;
+			catsArray = new JSONArray(array);
+		} catch (JSONException e1) {
+		}
+		for (int i = 0; i < catsArray.length(); i++) {
+			try {
 
-				currSJCat = sjArray.getJSONObject(i);
+				JSONObject currCat = catsArray.getJSONObject(i);
+				if (currCat.getString("parent_id").equals("0")) {
+					List<Category> subCategories = new ArrayList<Category>();
 
-				JSONArray subsArray = sjArray.getJSONObject(i).getJSONArray(
-						"positions");
-				List<Category> subCats = new ArrayList<Category>();
-				for (int j = 0; j < subsArray.length(); j++) {
-					JSONObject currSubCats = subsArray.getJSONObject(j);
-					subCats.add(new Category(
-							currSubCats.getString("title_rus"), currSubCats
-									.getString("key"), "sj"));
+					for (int j = 0; j < catsArray.length(); j++) {
+
+						JSONObject currSubCat = catsArray.getJSONObject(j);
+						if (currSubCat.getString("parent_id").equals(
+								currCat.getString("id")))
+							subCategories.add(new Category(currSubCat
+									.getString("name"), currSubCat
+									.getString("id")));
+					}
+
+					categories.add(new SuperCategory(currCat.getString("name"),
+							currCat.getString("id"), subCategories));
 				}
-				categories.add(new SuperCategory(currSJCat
-						.getString("title_rus"), currSJCat.getString("key"),
-						subCats));
+			} catch (JSONException e) {
 			}
 
-			for (int i = 0; i < hhArray.length(); i++) {
-				JSONObject currentHHCat = hhArray.getJSONObject(i);
-				List<Category> hhSubCats = new ArrayList<Category>();
-
-				JSONArray subArray = currentHHCat
-						.getJSONArray("specializations");
-				for (int j = 0; j < subArray.length(); j++) {
-					JSONObject currSubHHObj = subArray.getJSONObject(j);
-					hhSubCats.add(new Category(currSubHHObj.getString("name"),
-							currSubHHObj.getString("id"), "hh"));
-				}
-				categories.add(new SuperCategory(
-						currentHHCat.getString("name"), currentHHCat
-								.getString("id"), hhSubCats));
-			}
-
-		} catch (JSONException e) {
 		}
 		Log.d("cats", categories.toString());
 		return categories;
 	}
 
+	public JSONArray getCats() {
+		Log.d("cats", "run getCats");
+		JSONArray array = new JSONArray();
+		JSONArray serverArray = request
+				.doJSONArrayGetRequest("http://jobshunter.mobi/app/index.php/api/sitecats/format/json");
+		if (context.getSharedPreferences("JHPref", Context.MODE_PRIVATE)
+				.getString("cats", "").equals("")
+				|| (!Arrays.asList(
+						context.getSharedPreferences("JHPref",
+								Context.MODE_PRIVATE).getString("cats", ""))
+						.equals(serverArray.toString()) && !serverArray
+						.toString().equals("[]"))) {
+			array = serverArray;
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putString("cats", array.toString());
+			editor.commit();
+		} else {
+			try {
+				array = new JSONArray(context.getSharedPreferences("JHPref",
+						Context.MODE_PRIVATE).getString("cats", ""));
+			} catch (JSONException e) {
+			}
+		}
+		Log.d("cats", array.toString());
+		return array;
+
+	}
+
 	public ArrayList<Vacancy> getVacancies(String paramString, String pageNum) {
 		ArrayList<Vacancy> vacancies = new ArrayList<Vacancy>();
 		JSONObject vacObject = request
-				.doJSONGetRequest("http://jobshunter.mobi/app/index.php/api/vacancies/format/json?"
+				.doJSONGetRequest("http://jobshunter.mobi/app/index.php/api/vacancies2/format/json?"
 						+ paramString + "&page=" + pageNum);
 		Log.d("url",
-				"http://jobshunter.mobi/app/index.php/api/vacancies/format/json?"
+				"http://jobshunter.mobi/app/index.php/api/vacancies2/format/json?"
 						+ paramString + "&page=" + pageNum);
 
 		try {
@@ -237,5 +265,75 @@ public class JHRequest {
 						+ "&bookmark_id="
 						+ favID);
 		return deleteFavObject;
+	}
+
+	public void addGCMNotifications(String GSMResID) {
+
+		String apiKey = preferences.getString("apiKey", "");
+		String userID = preferences.getString("userID", "");
+		Log.d("par",
+				preferences.getString("apiKey", "") + " "
+						+ preferences.getString("userID", ""));
+		if (!apiKey.isEmpty() && !userID.isEmpty()) {
+			JSONObject res = request
+					.doJSONGetRequest("http://jobshunter.mobi/app/index.php/api/add_gcmid/format/json?user_id="
+							+ userID
+							+ "&apikey="
+							+ apiKey
+							+ "&gcmid="
+							+ GSMResID);
+			Log.d("res", res.toString());
+		}
+
+	}
+
+	public void getWorkTypes() {
+		String workTypes = preferences.getString("workTypes", "");
+		JSONArray workTypeArray = request
+				.doJSONArrayGetRequest("http://jobshunter.mobi/app/index.php/api/worktypes/format/json");
+		if (!workTypes.equals(workTypeArray.toString())) {
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putString("workTypes", workTypeArray.toString());
+			editor.commit();
+		}
+	}
+
+	public void subscribe(String subscrParams) {
+		String apiKey = preferences.getString("apiKey", "");
+		String userID = preferences.getString("userID", "");
+
+		JSONObject jsonObject = request
+				.doJSONGetRequest("http://jobshunter.mobi/app/index.php/api/subscribe/format/json?user_id="
+						+ userID + "&apikey=" + apiKey + subscrParams);
+
+		Log.d("url",
+				"http://jobshunter.mobi/app/index.php/api/subscribe/format/json?user_id="
+						+ userID + "&apikey=" + apiKey + subscrParams);
+
+		Log.d(TAG, jsonObject.toString());
+	}
+
+	public void getSubscribes() {
+		String apiKey = preferences.getString("apiKey", "");
+		String userID = preferences.getString("userID", "");
+		String subs = preferences.getString("subs", "");
+		String subsTypes = preferences.getString("subsTypes", "");
+
+		JSONArray subsTypesArray = request
+				.doJSONArrayGetRequest("http://jobshunter.mobi/app/index.php/api/subscription_types/format/json");
+
+		JSONArray subsArray = request
+				.doJSONArrayGetRequest("http://jobshunter.mobi/app/index.php/api/all_subscriptions/format/json?user_id="
+						+ userID + "&apikey=" + apiKey);
+
+		SharedPreferences.Editor editor = preferences.edit();
+		if (!subs.equals(subsArray.toString())) {
+			editor.putString("subs", subsArray.toString());
+		}
+		if (!subsTypes.equals(subsArray.toString())) {
+			editor.putString("subsTypes", subsTypesArray.toString());
+		}
+		editor.commit();
+
 	}
 }

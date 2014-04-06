@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/jobsListItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -33,13 +33,11 @@
             android:src="@drawable/favorites" />
     </RelativeLayout>
 
-    <Linae
+    <RelativeLayout
         android:id="@+id/jobs_list_item_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:orientation="vertical"
         android:tag="front" >
 
@@ -70,63 +68,53 @@
             android:text=""
             android:textColor="@android:color/black" />
 
-        <ImageButton
-            android:id="@+id/moreInfoBtn"
-            android:layout_width="30px"
-            android:layout_height="30px"
+        <RelativeLayout
+            android:id="@+id/hiddenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_below="@+id/salName"
             android:background="@null"
-            android:contentDescription="@string/morebtn"
-            android:scaleType="fitXY"
-            android:src="@drawable/angle_arrow" />
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/hiddenVacDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:id="@+id/mailCallBtnLayout"
+                android:layout_width="match_parent"
+                android:layout_height="128px"
+                android:layout_below="@+id/hiddenVacDescription"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <ImageButton
+                    android:id="@+id/vacMailBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/mail" />
+
+                <ImageButton
+                    android:id="@+id/vacCallBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/call" />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/hiddenLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@null"
-        android:visibility="gone" >
-
-        <TextView
-            android:id="@+id/hiddenVacDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@null"
-            android:textColor="@android:color/black" />
-
-        <LinearLayout
-            android:id="@+id/mailCallBtnLayout"
-            android:layout_width="match_parent"
-            android:layout_height="128px"
-            android:layout_below="@+id/hiddenVacDescription"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
-            android:weightSum="2" >
-
-            <ImageButton
-                android:id="@+id/vacMailBtn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:src="@drawable/mail" />
-
-            <ImageButton
-                android:id="@+id/vacCallBtn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:src="@drawable/call" />
-        </LinearLayout>
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

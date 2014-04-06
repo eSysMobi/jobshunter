@@ -5,6 +5,5 @@
     <string name="action_settings" tools:ignore="MissingTranslation">Settings</string>
     <string name="hello_world" tools:ignore="MissingTranslation">Hello world!</string>
     <string name="fb_app_id" tools:ignore="MissingTranslation">280975482050591</string>
-    <string name="morebtn">moreBtn</string>
 
 </resources>
