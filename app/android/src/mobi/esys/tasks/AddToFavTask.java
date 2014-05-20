@@ -1,5 +1,6 @@
 package mobi.esys.tasks;
 
+import mobi.esys.constants.Constants;
 import mobi.esys.server_side.JHRequest;
 
 import org.json.JSONObject;
@@ -17,9 +18,9 @@ public class AddToFavTask extends AsyncTask<Bundle, Void, JSONObject> {
 
 	@Override
 	protected JSONObject doInBackground(Bundle... params) {
-		return jhRequest.addToFav(params[0].getString("userID"),
-				params[0].getString("apiKey"), params[0].getString("site"),
-				params[0].getString("siteID"));
+		return jhRequest.addToFav(params[0].getString(Constants.USER_ID),
+				params[0].getString(Constants.API_KEY),
+				params[0].getString("site"), params[0].getString("siteID"));
 
 	}
 }

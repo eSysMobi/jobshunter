@@ -7,6 +7,7 @@ public class Vacancy implements Parcelable {
 	private transient String vacancyID;
 	private transient String vacancyProvider;
 	private transient String vacancyName;
+	private transient String vacancyDate;
 	private transient String vacancyTel;
 	private transient String vacancyMail;
 	private transient String vacancyDemand;
@@ -14,15 +15,18 @@ public class Vacancy implements Parcelable {
 	private transient String vacancyDescription;
 	private transient String favVacID;
 	private transient String haveNextPage;
+	private transient String vacCity;
 
 	public Vacancy(String vacancyID, String vacancyProvider,
-			String vacancyName, String vacancyTel, String vacancyMail,
-			String vacancyDemand, String vacancySalary,
-			String vacancyDescription, String favVacID, String haveNextPage) {
+			String vacancyName, String vacancyDate, String vacancyTel,
+			String vacancyMail, String vacancyDemand, String vacancySalary,
+			String vacancyDescription, String favVacID, String haveNextPage,
+			String vacCity) {
 		super();
 		this.vacancyID = vacancyID;
 		this.vacancyProvider = vacancyProvider;
 		this.vacancyName = vacancyName;
+		this.vacancyDate = vacancyDate;
 		this.vacancyTel = vacancyTel;
 		this.vacancyMail = vacancyMail;
 		this.vacancyDemand = vacancyDemand;
@@ -30,6 +34,7 @@ public class Vacancy implements Parcelable {
 		this.vacancyDescription = vacancyDescription;
 		this.favVacID = favVacID;
 		this.haveNextPage = haveNextPage;
+		this.vacCity = vacCity;
 	}
 
 	public String getFavVacID() {
@@ -96,21 +101,31 @@ public class Vacancy implements Parcelable {
 		this.vacancyDescription = vacancyDescription;
 	}
 
+	public String getVacancyDate() {
+		return vacancyDate;
+	}
+
+	public void setVacancyDate(String vacancyDate) {
+		this.vacancyDate = vacancyDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Vacancy [vacancyID=" + vacancyID + ", vacancyProvider="
 				+ vacancyProvider + ", vacancyName=" + vacancyName
-				+ ", vacancyTel=" + vacancyTel + ", vacancyMail=" + vacancyMail
-				+ ", vacancyDemand=" + vacancyDemand + ", vacancySalary="
-				+ vacancySalary + ", vacancyDescription=" + vacancyDescription
-				+ ", favVacID=" + favVacID + ", haveNextPage=" + haveNextPage
-				+ "]";
+				+ ", vacancyDate=" + vacancyDate + ", vacancyTel=" + vacancyTel
+				+ ", vacancyMail=" + vacancyMail + ", vacancyDemand="
+				+ vacancyDemand + ", vacancySalary=" + vacancySalary
+				+ ", vacancyDescription=" + vacancyDescription + ", favVacID="
+				+ favVacID + ", haveNextPage=" + haveNextPage + ", vacCity="
+				+ vacCity + "]";
 	}
 
 	private Vacancy(Parcel in) {
 		vacancyID = in.readString();
 		vacancyProvider = in.readString();
 		vacancyName = in.readString();
+		vacancyDate = in.readString();
 		vacancyTel = in.readString();
 		vacancyMail = in.readString();
 		vacancyDemand = in.readString();
@@ -118,6 +133,7 @@ public class Vacancy implements Parcelable {
 		vacancyDescription = in.readString();
 		favVacID = in.readString();
 		haveNextPage = in.readString();
+		vacCity = in.readString();
 	}
 
 	@Override
@@ -130,6 +146,7 @@ public class Vacancy implements Parcelable {
 		arg0.writeString(vacancyID);
 		arg0.writeString(vacancyProvider);
 		arg0.writeString(vacancyName);
+		arg0.writeString(vacancyDate);
 		arg0.writeString(vacancyTel);
 		arg0.writeString(vacancyMail);
 		arg0.writeString(vacancyDemand);
@@ -137,6 +154,7 @@ public class Vacancy implements Parcelable {
 		arg0.writeString(vacancyDescription);
 		arg0.writeString(favVacID);
 		arg0.writeString(haveNextPage);
+		arg0.writeString(vacCity);
 
 	}
 
@@ -164,6 +182,14 @@ public class Vacancy implements Parcelable {
 
 	public void setHaveNextPage(String haveNextPage) {
 		this.haveNextPage = haveNextPage;
+	}
+
+	public String getVacCity() {
+		return vacCity;
+	}
+
+	public void setVacCity(String vacCity) {
+		this.vacCity = vacCity;
 	}
 
 }

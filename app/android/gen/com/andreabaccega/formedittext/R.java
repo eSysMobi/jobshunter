@@ -17,21 +17,21 @@ public final class R {
 		public static final int testType = 0x7f01002b;
 	}
 	public static final class id {
-		public static final int alpha = 0x7f050010;
-		public static final int alphaNumeric = 0x7f050011;
-		public static final int creditCard = 0x7f050013;
-		public static final int custom = 0x7f050019;
-		public static final int date = 0x7f05001c;
-		public static final int domainName = 0x7f050015;
-		public static final int email = 0x7f050012;
-		public static final int ipAddress = 0x7f050016;
-		public static final int nocheck = 0x7f050018;
-		public static final int numeric = 0x7f05000f;
-		public static final int personFullName = 0x7f05001b;
-		public static final int personName = 0x7f05001a;
-		public static final int phone = 0x7f050014;
-		public static final int regexp = 0x7f05000e;
-		public static final int webUrl = 0x7f050017;
+		public static final int alpha = 0x7f040010;
+		public static final int alphaNumeric = 0x7f040011;
+		public static final int creditCard = 0x7f040013;
+		public static final int custom = 0x7f040019;
+		public static final int date = 0x7f04001c;
+		public static final int domainName = 0x7f040015;
+		public static final int email = 0x7f040012;
+		public static final int ipAddress = 0x7f040016;
+		public static final int nocheck = 0x7f040018;
+		public static final int numeric = 0x7f04000f;
+		public static final int personFullName = 0x7f04001b;
+		public static final int personName = 0x7f04001a;
+		public static final int phone = 0x7f040014;
+		public static final int regexp = 0x7f04000e;
+		public static final int webUrl = 0x7f040017;
 	}
 	public static final class string {
 		public static final int error_creditcard_number_not_valid = 0x7f060020;

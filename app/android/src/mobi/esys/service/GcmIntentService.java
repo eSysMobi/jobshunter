@@ -72,8 +72,8 @@ public class GcmIntentService extends IntentService {
 				.setContentTitle(msg.getString("amount") + " новых вакансий")
 				.setStyle(
 						new NotificationCompat.BigTextStyle()
-								.bigText("Нажмите сюда чтобы просмотреть"))
-				.setContentText("Нажмите сюда чтобы просмотреть");
+								.bigText(getString(R.string.look)))
+				.setContentText(getString(R.string.look));
 
 		mBuilder.setContentIntent(contentIntent);
 		Notification notification = mBuilder.build();

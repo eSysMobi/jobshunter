@@ -39,10 +39,7 @@ public class Subscribe {
 	@Override
 	public String toString() {
 		return "Subscribe [subID=" + subID + ", subName=" + subName
-				+ ", specID=" + specID + ", getSubID()=" + getSubID()
-				+ ", getSubName()=" + getSubName() + ", getSpecID()="
-				+ getSpecID() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", specID=" + specID + "]";
 	}
 
 }

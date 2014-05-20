@@ -13,10 +13,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class Request {
-	private InputStream inputStream;
+	private transient InputStream inputStream;
 
 	public JSONObject doJSONGetRequest(String requestURL) {
+
 		InputStream inputStream = new InputStream() { // NOPMD by Àðò¸ì on
 														// 03.06.13 13:02
 
@@ -32,6 +35,7 @@ public class Request {
 		try {
 			final HttpClient httpClient = new DefaultHttpClient();
 			final HttpGet httpGet = new HttpGet(requestURL);
+			Log.d("req url", requestURL);
 
 			final HttpResponse httpResponse = httpClient.execute(httpGet);
 			final HttpEntity httpEntity = httpResponse.getEntity();
@@ -55,9 +59,11 @@ public class Request {
 		} catch (Exception Exception) {
 		}
 		return jsonObject;
+
 	}
 
 	public JSONArray doJSONArrayGetRequest(String requestURL) {
+
 		inputStream = new InputStream() { // NOPMD by Àðò¸ì on
 											// 03.06.13 13:02
 
@@ -73,6 +79,7 @@ public class Request {
 		try {
 			final HttpClient httpClient = new DefaultHttpClient();
 			final HttpGet httpGet = new HttpGet(requestURL);
+			Log.d("req url", requestURL);
 
 			final HttpResponse httpResponse = httpClient.execute(httpGet);
 			final HttpEntity httpEntity = httpResponse.getEntity();

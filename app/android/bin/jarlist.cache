@@ -1,8 +1,8 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1375878471815 110746 59f19e43354d32de831379c23ce03bb259a4c2b7 C:\swipelistview\libs\nineoldandroids-2.4.0.jar
-1392709361769 110746 59f19e43354d32de831379c23ce03bb259a4c2b7 C:\JobsHunter240220141228\libs\nineoldandroids-2.4.0.jar
-1396804779782 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\SlidingMenu-master\library\libs\android-support-v4.jar
-1394695789313 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\swipelistview\libs\android-support-v4.jar
-1392709355632 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\JobsHunter240220141228\libs\android-support-v4.jar
+1396804963859 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\workspace\library\libs\android-support-v4.jar
+1392709355632 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\workspace\JobsHunter\libs\android-support-v4.jar
+1394695789313 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\workspace\swipelistview\libs\android-support-v4.jar
+1375878471815 110746 59f19e43354d32de831379c23ce03bb259a4c2b7 C:\workspace\swipelistview\libs\nineoldandroids-2.4.0.jar
+1392709361769 110746 59f19e43354d32de831379c23ce03bb259a4c2b7 C:\workspace\JobsHunter\libs\nineoldandroids-2.4.0.jar

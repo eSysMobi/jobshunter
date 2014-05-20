@@ -5,5 +5,11 @@
     <string name="action_settings" tools:ignore="MissingTranslation">Settings</string>
     <string name="hello_world" tools:ignore="MissingTranslation">Hello world!</string>
     <string name="fb_app_id" tools:ignore="MissingTranslation">280975482050591</string>
+    <string name="fav_success">Вакансия успешно добавлена в избранное</string>
+    <string name="fav_already">Данная вакансия уже есть в избранном</string>
+    <string name="age_validator">Вам должно быть 16 или более лет</string>
+    <string name="find_city_fail">Не удалось определить город</string>
+    <string name="look">Нажмите сюда чтобы просмотреть</string>
+    <string name="loginRegButtonLabel">Войти</string>
 
 </resources>

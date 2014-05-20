@@ -10,14 +10,14 @@
         android:id="@+id/jobs_list_item_action_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#999"
+        android:background="@color/slidin_backview_bg"
         android:clickable="false"
         android:tag="back" >
 
         <ImageButton
             android:id="@+id/vacDelBtn"
-            android:layout_width="90px"
-            android:layout_height="90px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@null"
@@ -25,8 +25,8 @@
 
         <ImageButton
             android:id="@+id/vacFavBtn"
-            android:layout_width="90px"
-            android:layout_height="90px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/vacDelBtn"
             android:background="@null"
@@ -44,7 +44,7 @@
         <ImageView
             android:id="@+id/vacProviderImage"
             android:layout_width="wrap_content"
-            android:layout_height="300px"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@null" />
@@ -60,11 +60,31 @@
             android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/salName"
+            android:id="@+id/cityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/vacName"
             android:layout_below="@+id/vacName"
+            android:layout_toRightOf="@+id/vacProviderImage"
+            android:background="@null"
+            android:text=""
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/salName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/cityName"
+            android:layout_below="@+id/cityName"
+            android:text=""
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/dateName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/salName"
+            android:layout_below="@+id/salName"
             android:text=""
             android:textColor="@android:color/black" />
 
@@ -73,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/salName"
+            android:layout_below="@+id/dateName"
             android:background="@null"
             android:visibility="gone" >
 
@@ -90,7 +110,7 @@
             <LinearLayout
                 android:id="@+id/mailCallBtnLayout"
                 android:layout_width="match_parent"
-                android:layout_height="128px"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/hiddenVacDescription"
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal"

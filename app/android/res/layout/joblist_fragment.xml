@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.fortysevendeg.swipelistview.SwipeListView
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/jobsListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/catLayout"
+        android:layout_alignParentTop="true"
+        swipe:swipeActionLeft="reveal"
+        swipe:swipeBackView="@+id/jobs_list_item_action_view"
+        swipe:swipeCloseAllItemsWhenMoveList="true"
+        swipe:swipeFrontView="@+id/jobs_list_item_layout"
+        swipe:swipeMode="left"
+        swipe:swipeOffsetLeft="360px"
+        swipe:swipeOpenOnLongPress="false" />
+
+    <RelativeLayout
+        android:id="@+id/catLayout"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_alignParentBottom="true"
+        android:background="#cfc" >
+
+        <ImageButton
+            android:id="@+id/upBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/up" />
+
+        <ImageButton
+            android:id="@+id/firsPageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home" />
+
+        <View
+            android:id="@+id/centerView"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <ImageButton
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/firsPageBtn"
+            android:layout_toRightOf="@+id/centerView"
+            android:scaleType="fitCenter"
+            android:src="@drawable/next" />
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/upBtn"
+            android:layout_toLeftOf="@+id/addBtn"
+            android:scaleType="fitCenter"
+            android:src="@drawable/prev" />
+    </RelativeLayout>
+
+</RelativeLayout>
