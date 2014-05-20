@@ -685,6 +685,14 @@ public class SubsFragment extends Fragment {
 			}
 		} else {
 			Fragment emptyFragment = new EmptyFragment();
+			if (getFragmentManager().findFragmentById(R.id.frmCont).equals(
+					emptyFragment)) {
+				getFragmentManager()
+						.beginTransaction()
+						.remove(getFragmentManager().findFragmentById(
+								R.id.frmCont)).commit();
+			}
+
 			getFragmentManager().beginTransaction()
 					.replace(R.id.frmCont, emptyFragment, "empty")
 					.addToBackStack(null).commit();

@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.fortysevendeg.swipelistview.SwipeListView;
@@ -194,7 +193,16 @@ public class JobsFragment extends Fragment {
 				}
 			});
 		} else {
+
 			Fragment emptyFragment = new EmptyFragment();
+			if (getFragmentManager().findFragmentById(R.id.frmCont).equals(
+					emptyFragment)) {
+				getFragmentManager()
+						.beginTransaction()
+						.remove(getFragmentManager().findFragmentById(
+								R.id.frmCont)).commit();
+			}
+
 			getFragmentManager().beginTransaction()
 					.replace(R.id.frmCont, emptyFragment, "empty")
 					.addToBackStack(null).commit();

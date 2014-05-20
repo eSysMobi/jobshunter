@@ -45,6 +45,16 @@ public class MainActivity extends SlidingFragmentActivity {
 	private transient View menuClickView;
 	private transient View filterClickView;
 
+	private transient String frTag = "";
+
+	public String getFrTag() {
+		return frTag;
+	}
+
+	public void setFrTag(String frTag) {
+		this.frTag = frTag;
+	}
+
 	private transient SharedPreferences preferences;
 
 	@Override

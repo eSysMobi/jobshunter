@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import mobi.esys.constants.Constants;
-import mobi.esys.fragments.MenuFragment;
 import mobi.esys.jobshunter.R;
 import mobi.esys.specific_data_type.Vacancy;
 import mobi.esys.string_process.DateStringProcess;
@@ -15,28 +14,19 @@ import mobi.esys.tasks.DeleteFavTask;
 
 import org.json.JSONException;
 
-import android.app.Activity;
-import android.app.Fragment;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.text.Html;
-
 import android.util.Log;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-
 import android.widget.AbsListView;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.AbsListView.OnScrollListener;
@@ -75,6 +65,11 @@ public class JobsListAdapter extends ArrayAdapter<Vacancy> {
 	private transient Bitmap loadedBitmap;
 
 	private transient SwipeListView listView;
+
+	private transient int width;
+	private transient int height;
+
+	private SharedPreferences preferences;
 
 	private static final String USER_ID = Constants.USER_ID;
 	private static final String PREF = Constants.PREF_STRING;
@@ -124,6 +119,12 @@ public class JobsListAdapter extends ArrayAdapter<Vacancy> {
 		}
 		vacView.setFocusable(true);
 		vacView.setFocusableInTouchMode(true);
+
+		preferences = context.getSharedPreferences(Constants.PREF_STRING,
+				Context.MODE_PRIVATE);
+
+		width = preferences.getInt("screenWidth", 0);
+		height = preferences.getInt("screenHeight", 0);
 
 		parentView = (ListView) arg2;
 		parentView.setOnScrollListener(new OnScrollListener() {
@@ -208,6 +209,13 @@ public class JobsListAdapter extends ArrayAdapter<Vacancy> {
 			}
 		});
 
+		RelativeLayout.LayoutParams dvblp = new RelativeLayout.LayoutParams(
+				height / 10 - 20, height / 10 - 20);
+		dvblp.setMargins(width / 72, width / 72, width / 72, width / 72);
+		dvblp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		dvblp.addRule(RelativeLayout.CENTER_VERTICAL);
+		delVacButton.setLayoutParams(dvblp);
+
 		ImageButton favVacBtn = (ImageButton) vacView
 				.findViewById(R.id.vacFavBtn);
 
@@ -242,17 +250,20 @@ public class JobsListAdapter extends ArrayAdapter<Vacancy> {
 				if (status.equals("success")) {
 					Toast.makeText(context, R.string.fav_success,
 							Toast.LENGTH_SHORT).show();
-					Fragment menuFrag = ((Activity) context)
-							.getFragmentManager().findFragmentByTag("menuFrag");
-					if (menuFrag instanceof MenuFragment) {
-						((MenuFragment) menuFrag).refreshMenu();
-					}
+
 				} else if (status.equals("Already bookmarked")) {
 					Toast.makeText(context, R.string.fav_already,
 							Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
+
+		RelativeLayout.LayoutParams fvblp = new RelativeLayout.LayoutParams(
+				height / 10 - 20, height / 10 - 20);
+		fvblp.setMargins(width / 72, width / 72, width / 72, width / 72);
+		fvblp.addRule(RelativeLayout.LEFT_OF, R.id.vacDelBtn);
+		fvblp.addRule(RelativeLayout.CENTER_VERTICAL);
+		favVacBtn.setLayoutParams(fvblp);
 
 		final RelativeLayout jobsListLayout = (RelativeLayout) vacView
 				.findViewById(R.id.jobs_list_item_layout);
